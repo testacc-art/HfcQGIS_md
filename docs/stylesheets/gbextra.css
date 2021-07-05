@@ -43,6 +43,8 @@
     color: var(--md-accent-fg-color);
 }
 
+ /*sposta più in alto il back to top in mobile se è installata la condivisione social; */
+ @media screen and (max-width: 1100px) { .md-top {bottom: 2.5rem!important;}}
 
 /* navigation bar active color*/
 .md-nav__item .md-nav__link--active {
