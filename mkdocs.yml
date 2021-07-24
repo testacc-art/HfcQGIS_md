@@ -1,12 +1,12 @@
 ## Project information
 site_name: Help field calculator
-site_url: https://hfcqgis-md.readthedocs.io/it/latest
+site_url: https://gbvitrano.github.io/HfcQGIS_md/
 site_description: Help funzioni calcolatore di campi di QGIS
 site_author: RTD by OpenDataSicilia.it
 
 ## Repository
 repo_name: OpenDataSicilia/HfcQGIS
-repo_url: https://github.com/opendatasicilia/HfcQGIS-md
+repo_url: https://github.com/gbvitrano/HfcQGIS_md
 edit_uri: edit/main/docs/ #disables edit button
 
 # Copyright
@@ -35,7 +35,7 @@ extra:
       link: https://groups.google.com/forum/#!forum/opendatasicilia
       name: mailing list OpenDataSicilia
     - icon: fontawesome/solid/rss
-      link: https://hfcqgis-md.readthedocs.io/it/latest/feed_rss_created.xml
+      link: ../feed_rss_created.xml
       name: Feed RSS
   analytics:
     provider: google
