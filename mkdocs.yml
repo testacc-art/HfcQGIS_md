@@ -129,6 +129,7 @@ nav:
        - Concetti tabella attributi: calcolatore_campi/tabella_attributi.md
        
     - Novità:
+       - Introduzione: release/intro_novita.md
        - QGIS 3.20 | 21/06/2021: release/novita_320.md   
        - QGIS 3.18 | 22/02/2021: release/novita_318.md
        - QGIS 3.16 | 23/10/2020: release/novita_316.md
@@ -142,7 +143,7 @@ nav:
        - QGIS 3.0  | 23/02/2018: release/novita_30.md
        
     - Funzioni:
-       - Elenco funzioni: gr_funzioni/gruppo_funzioni.md
+       - Elenco gruppi: gr_funzioni/gruppo_funzioni.md
        - Aggrega: gr_funzioni/aggrega/aggrega_unico.md
           #   - Elenco:  gr_funzioni/aggrega/aggrega_gruppo.md
           #   - aggregate: gr_funzioni/aggrega/aggregate.md
@@ -284,7 +285,7 @@ nav:
             # - to_time: gr_funzioni/data_ora/to_time.md
             # - week: gr_funzioni/data_ora/week.md
             # - year: gr_funzioni/data_ora/year.md
-       - Espressione utente: gr_funzioni/espressione_utente/espressione_utente_unico.md
+       - Espressioni utente: gr_funzioni/espressione_utente/espressione_utente_unico.md
             # - Elenco: gr_funzioni/espressione_utente/espressione_utente.md
             # - bla bla: bla.md                
        - File e percorsi: gr_funzioni/file_e_percorsi/file_e_percorsi_unico.md
@@ -299,7 +300,7 @@ nav:
             # - mime_type:  gr_funzioni/generale/mime_type.md
             # - var:  gr_funzioni/generale/var.md
             # - with_variable:  gr_funzioni/generale/with_variable.md  
-       - Lat e Lon Tools: gr_funzioni/lat_lon_tools/lat_lon_tools_unico.md
+      #  - Lat e Lon Tools: gr_funzioni/lat_lon_tools/lat_lon_tools_unico.md
             # - Elenco: gr_funzioni/lat_long_tools/lat_long_tools.md
             # - bla bla: bla.md
        - Geometria: gr_funzioni/geometria/geometria_unico.md
@@ -638,72 +639,76 @@ nav:
             # - row_number: gr_funzioni/variabili/row_number.md
             # - value: gr_funzioni/variabili/value.md
             # - with_variable: gr_funzioni/variabili/with_variable.md    
-       - da documentare: gr_funzioni/da_documentare.md
+      #  - da documentare: gr_funzioni/da_documentare.md
         
-    - Esercizi: 
+    - Esempi svolti: 
         - Uso delle funzioni: esempi/lista_esempi.md
-        - Esempi svolti:
-           - Campo area: esempi/add_col_area.md
-           - Campi coordinate: esempi/add_coord_xy.md
-           - Campo virtuale: esempi/add_campo_virtuale.md
-           - Campo quota z: esempi/add_col_z.md
-           - Etichettare: esempi/etichette.md
-           - Aggiornare geometria: esempi/agg_geom.md
-           - Conversione: esempi/conversione.md
-           - Tematizzare: esempi/tematizzare.md
-           - Legenda: esempi/espressione_regolare.md
-           - Selezione: esempi/select_with_aggregate.md
-           - Core area: esempi/core_area.md
-           - Sposta etichette: esempi/sposta_etichetta_linea.md
-           - Conteggio valori: esempi/conteggio.md
-           - Centroidi linee curve: esempi/centroid_linee.md
-           - Conta i punti nel poligono: esempi/conta_punti_in_poligono.md
-           - Somma lunghezze nel poligono: esempi/somma_lunghezze_nel_poligono.md
-           - Conta punti nel poligono per categorie: esempi/punti_in_poligoni_categorie.md
-           - Nascondi etichette: esempi/nascondi_etichette.md
-           - Calcolo area poligoni nel reticolo: esempi/calcolo_area_poligoni_reticolo.md
-           - Spatial join: esempi/spatial_join.md
-           - Unica label: esempi/unica_etichetta_più_poligoni.md
-           - Elenco comuni: esempi/elenco_comuni_attraversati_fiume.md
-           - Rotazione pattern lineare: esempi/rotazione_pattern.md
-           - Numerazione poligoni in base a relazione spaziale: esempi/numerazione_poligoni_rel_spaziale.md
-           - Assegnare categoria prevalente: esempi/assegnare_cat_prevalente.md
-           - Creare Hub lines: esempi/hub_lines.md
-           - Aggrega con SR differenti: esempi/aggregare_con_sr_differenti.md
-           - Distanze progressive chilometriche: esempi/distanze_progressive_chilometriche.md
-           - Aggregare elementi adiacenti: esempi/aggregare_elementi_contigui.md
-           - Linea minima distanza tra due punti: esempi/linea_min_distanza.md
-           - Creare campo somma cumulativa: esempi/add_campo_sum_cumulativo.md
-           - Aggiungere punto a linea: esempi/aggiungere_punto_a_linea.md
-           - Drilldown form multiple: esempi/drilldown_form_multiple.md
-           - Selezionare primi n valori: esempi/selezionare_primi_n_valori.md
-           - Generalizzare isoipse: esempi/generalizzare_linee.md
-           - Campo coord in lat lon: esempi/campo_coord_in_lat_lon.md
-           - Calcolo incrementi giornalieri: esempi/calcolo_incrementi_giornalieri.md
-           - Tracciare un grafico: esempi/tracciare_grafico_generatore_geometrie.md
-           - Elenco ordinato di Comuni: esempi/elenco_ordinato_comuni_attraversati.md
-           - Etichettare con chiave-valore: esempi/etichettare_chiave_valore.md
-           - Etichettare itinerario con elenco ordinato Comuni: esempi/etichettare_itinerario_elenco_comuni_attraversati.md
-           - Etichette formattate diversi stili: esempi/etichette_formattate_diversi_stili.md
-           - Selezionare vertici duplicati: esempi/select_duplicate_vertices.md
-           - Conteggio caratteri diversi: esempi/conteggio_caratteri_diversi.md
-           - Distanza minima tra due vettori: esempi/linea_min_distanza2.md
-           - Lunghezze segmenti di un poligono: esempi/lunghezze_segmenti_poligono.md
-           - Fill-down con QGIS: esempi/fill-down.md
-           - Finestra temporale: esempi/finestra_temporale.md
-           - Rotazione simbolo parallelo ad una linea: esempi/rotazione_simbolo_parallelo_linea.md
-           - Livello acqua: esempi/livello_acqua.md
+        - Esempi svolti: esempi/lista_esempi.md
+          #  - Campo area: esempi/add_col_area.md
+          #  - Campi coordinate: esempi/add_coord_xy.md
+          #  - Campo virtuale: esempi/add_campo_virtuale.md
+          #  - Campo quota z: esempi/add_col_z.md
+          #  - Etichettare: esempi/etichette.md
+          #  - Aggiornare geometria: esempi/agg_geom.md
+          #  - Conversione: esempi/conversione.md
+          #  - Tematizzare: esempi/tematizzare.md
+          #  - Legenda: esempi/espressione_regolare.md
+          #  - Selezione: esempi/select_with_aggregate.md
+          #  - Core area: esempi/core_area.md
+          #  - Sposta etichette: esempi/sposta_etichetta_linea.md
+          #  - Conteggio valori: esempi/conteggio.md
+          #  - Centroidi linee curve: esempi/centroid_linee.md
+          #  - Conta i punti nel poligono: esempi/conta_punti_in_poligono.md
+          #  - Somma lunghezze nel poligono: esempi/somma_lunghezze_nel_poligono.md
+          #  - Conta punti nel poligono per categorie: esempi/punti_in_poligoni_categorie.md
+          #  - Nascondi etichette: esempi/nascondi_etichette.md
+          #  - Calcolo area poligoni nel reticolo: esempi/calcolo_area_poligoni_reticolo.md
+          #  - Spatial join: esempi/spatial_join.md
+          #  - Unica label: esempi/unica_etichetta_più_poligoni.md
+          #  - Elenco comuni: esempi/elenco_comuni_attraversati_fiume.md
+          #  - Rotazione pattern lineare: esempi/rotazione_pattern.md
+          #  - Numerazione poligoni in base a relazione spaziale: esempi/numerazione_poligoni_rel_spaziale.md
+          #  - Assegnare categoria prevalente: esempi/assegnare_cat_prevalente.md
+          #  - Creare Hub lines: esempi/hub_lines.md
+          #  - Aggrega con SR differenti: esempi/aggregare_con_sr_differenti.md
+          #  - Distanze progressive chilometriche: esempi/distanze_progressive_chilometriche.md
+          #  - Aggregare elementi adiacenti: esempi/aggregare_elementi_contigui.md
+          #  - Linea minima distanza tra due punti: esempi/linea_min_distanza.md
+          #  - Creare campo somma cumulativa: esempi/add_campo_sum_cumulativo.md
+          #  - Aggiungere punto a linea: esempi/aggiungere_punto_a_linea.md
+          #  - Drilldown form multiple: esempi/drilldown_form_multiple.md
+          #  - Selezionare primi n valori: esempi/selezionare_primi_n_valori.md
+          #  - Generalizzare isoipse: esempi/generalizzare_linee.md
+          #  - Campo coord in lat lon: esempi/campo_coord_in_lat_lon.md
+          #  - Calcolo incrementi giornalieri: esempi/calcolo_incrementi_giornalieri.md
+          #  - Tracciare un grafico: esempi/tracciare_grafico_generatore_geometrie.md
+          #  - Elenco ordinato di Comuni: esempi/elenco_ordinato_comuni_attraversati.md
+          #  - Etichettare con chiave-valore: esempi/etichettare_chiave_valore.md
+          #  - Etichettare itinerario con elenco ordinato Comuni: esempi/etichettare_itinerario_elenco_comuni_attraversati.md
+          #  - Etichette formattate diversi stili: esempi/etichette_formattate_diversi_stili.md
+          #  - Selezionare vertici duplicati: esempi/select_duplicate_vertices.md
+          #  - Conteggio caratteri diversi: esempi/conteggio_caratteri_diversi.md
+          #  - Distanza minima tra due vettori: esempi/linea_min_distanza2.md
+          #  - Lunghezze segmenti di un poligono: esempi/lunghezze_segmenti_poligono.md
+          #  - Fill-down con QGIS: esempi/fill-down.md
+          #  - Finestra temporale: esempi/finestra_temporale.md
+          #  - Rotazione simbolo parallelo ad una linea: esempi/rotazione_simbolo_parallelo_linea.md
+          #  - Livello acqua: esempi/livello_acqua.md
         - Provaci tu: mettiti_alla_prova.md   
         
     - Corso di Formazione: corso_formazione/corso_di_formazione.md
     
-    -  Lavora con Noi:
+    - Lavora con Noi:
         - Supporter: supporter.md
         - Parlano di noi: parlano_di_noi.md
-        - Contribuire a HfcQGIS: contributing.md
-        
+        # - Contribuire a HfcQGIS: contributing.md
+    
+    - Sostieni: 
+        - Contribuire: contributing.md
+        - Da documentare: gr_funzioni/da_documentare.md
+
     - About:
-        - OpenDataSicilia: ods.md    
+        - OpenDataSicilia: ods.md
         - Autore HfcQGIS: autore.md
         - Webmaster: webmaster/gbvitrano.md 
         - Traduzione: traduzione.md
