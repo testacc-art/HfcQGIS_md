@@ -3,7 +3,11 @@ tags:
   - Novità
 ---
 
-# Novità rilevanti introdotte nella 3.12
+# Novità rilevanti introdotte nella 3.12 Bucaresti
+
+![](../img/splashscreen/splash_3_12.png)
+
+<https://www.qgis.org/it/site/forusers/visualchangelog312/index.html>
 
 ## Nuove funzioni
 

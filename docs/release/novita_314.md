@@ -5,16 +5,9 @@ tags:
 
 # Novità rilevanti introdotte nella 3.14 Pi
 
-<!-- TOC -->
+![](../img/splashscreen/splash_3_14.png)
 
-- [Novità rilevanti introdotte nella 3.14 Pi (π)](#novità-rilevanti-introdotte-nella-314-pi-π)
-  - [Nuove funzioni](#nuove-funzioni)
-  - [Fix](#fix)
-  - [GUI/UI/Forms](#guiuiforms)
-  - [Variabili](#variabili)
-  - [Migliormasnti funzioni](#migliormasnti-funzioni)
-
-<!-- /TOC -->
+<https://www.qgis.org/it/site/forusers/visualchangelog314/index.html>
 
 ## Nuove funzioni
 

@@ -3,7 +3,11 @@ tags:
   - Novità
 ---
 
-# Novità rilevanti introdotte nella 3.2
+# Novità rilevanti introdotte nella 3.2 Bonn
+
+![](../img/splashscreen/splash_3_2_0.png)
+
+<https://www.qgis.org/it/site/forusers/visualchangelog32/index.html>
 
 ## Generatore di espressioni più utile.
 

@@ -1,14 +1,17 @@
+---
+social_image: img/card_social/hfc_gr_geom.png
+---
 
-# Gruppo Geometria
+# Gruppo Geometria  
 
-Questo gruppo contiene funzioni che operano sugli oggetti geometrici es. lunghezza, area.
+!!! Abstract
+	**Questo gruppo contiene funzioni che operano sugli oggetti geometrici es: _lunghezza_, _area_.**
+
+---
 
 ## $area
 
-Restituisce l'area della geometria corrente.
-L'area calcolata da questa funzione rispetta sia le impostazioni dell'ellissoide del progetto corrente sia delle unità di misura.
-Per esempio, se è stato impostato un ellissoide per il progetto allora l'area calcolata sarà ellisoidica
-altrimenti se non è stato impostato alcun ellissoide l'area calcolata sarà planimetrica.
+Restituisce l'area della geometria corrente. L'area calcolata da questa funzione rispetta sia le impostazioni dell'ellissoide del progetto corrente sia delle unità di misura. Per esempio, se è stato impostato un ellissoide per il progetto allora l'area calcolata sarà ellisoidica altrimenti se non è stato impostato alcun ellissoide l'area calcolata sarà planimetrica.
 
 Sintassi:
 
@@ -16,31 +19,19 @@ Sintassi:
 
 Esempi:
 
-Aggiungiamo un campo _area_mq_ e lo popoliamo con la funzione _$area_: 
-1. selezionare un layer vettoriale di tipo poligonale;
-2. clic sull'icona del calcolatore di campi ![calc](https://docs.qgis.org/testing/en/_images/mActionCalculateField.png)
+```
+$area → 131196498,619546
+```
 
-![](../../img/geometria/area/area002.png)
-
-1. di default è sempre spuntato;
-2. digitare il nome del campo _area_mq_;
-3. il tipo di campo di uscita in questo caso è _numero decimale (Double)_, definire la lunghezza del campo;
-4. ricercare la funzione digitando _area_;
-5. doppio clic sulla funzione **$area** per inserirlo;
-6. clic su **OK** per eseguire.
-
-![](../../img/geometria/area/area004.png)
-
-nell'esempio ho usato un vettore poligonale con EPSG 3004 (sistema proiettato, unità metro):  la superficie di ogni elemento è in metri quadrati come evidenziato nella tabella attributi
+![](../../img/geometria/area/area1.png)
 
 Nota bene:
 
-!!! Danger
-    se il _<span style="color:red;">SR del progetto</span>_ in cui si sta calcolando l'area (**$area**) fosse un sistema proiettato (es:EPSG 3003/4; 32632/33/34 ecc..) allora l'unità di misura sarebbe il metro, invece se il _<span style="color:red;">SR del progetto</span>_ fosse EPSG 4326, cioè un sistema geografico, allora l'unità di misura dell'area sarebbe _**gradi**_ e quindi poco comprensibile e valori piccoli (0.00001).
+Se il _<span style="color:red;">SR del progetto</span>_ in cui si sta calcolando l'area (**$area**) fosse un sistema proiettato (es:EPSG 3003/4; 32632/33/34 ecc..) allora l'unità di misura sarebbe il metro, invece se il _<span style="color:red;">SR del progetto</span>_ fosse EPSG 4326, cioè un sistema geografico, allora l'unità di misura dell'area sarebbe _**gradi**_ e quindi poco comprensibile e valori piccoli (0.00001).
 
-Osservazioni:
+Osservazione:
 
-in generale `$area <> area($geometry)`
+in generale $area <> area($geometry)
 
 ---
 
@@ -55,20 +46,16 @@ Sintassi:
 Esempi:
 
 ```
-* geomToWKT( $geometry ) → POINT(6 50)
-* area($geoamtry) → 1234567.89 mq
-* perimeter($geometry) → 25689.25 m
+geomToWKT( $geometry ) → POINT(6 50)
+area($geoamtry) → 1234567.89 mq
+perimeter($geometry) → 25689.25 m
 ```
 
 ![](../../img/geometria/_geometry/_geometry1.png)
 
-Nota bene:
-
---
-
 Osservazioni:
 
-il $ indica che è relativo all'elemento corrente e non ha bisogno di argomenti.
+il `$` indica che è relativo all'elemento corrente e non ha bisogno di argomenti.
 
 ---
 
@@ -82,13 +69,15 @@ Sintassi:
 
 Esempi:
 
-* $length → 42.4711 
+```
+$length → 42.4711 
+```
 
 ![](../../img/geometria/_length/_length1.png)
 
-Nota bene:
+Osservazione:
 
-Come evidenziano nella definizione della funzione, `$length` calcola la lunghezza rispettando le impostazioni di progetto:
+Come evidenziano nella definizione della funzione, [$length](#length) calcola la lunghezza rispettando le impostazioni di progetto:
 
 ![](../../img/geometria/_length/_length2.png)
 
@@ -102,7 +91,7 @@ Queste modofiche non valgono per l'etichettatura, la lunghezza sarà quella rela
 
 Osservazioni:
 
-il $ indica che è relativo all'elemento corrente e non ha bisogno di argomenti.
+il `$` indica che è relativo all'elemento corrente e non ha bisogno di argomenti.
 
 ---
 
@@ -116,18 +105,19 @@ Sintassi:
 
 Esempi:
 
-- `$perimeter → 2545897.26`
+```
+$perimeter → 2545897.26
+```
 
 ![](../../img/geometria/_perimeter/_perimeter1.png)
 
 Nota bene:
 
-!!! Nota
-    Si utilizza SOLO per i poligoni, nel caso di feature lineari [\$length ]($length.md)
+Si utilizza SOLO per i poligoni, nel caso di feature lineari [$length ](#length)
 
 Osservazioni:
 
-il $ indica che è relativo all'elemento corrente e non ha bisogno di argomenti.
+il `$` indica che è relativo all'elemento corrente e non ha bisogno di argomenti.
 
 ---
 
@@ -141,19 +131,18 @@ Sintassi:
 
 Esempi:
 
-* `$x → 12.2568971`
+```
+$x → 12.2568971
+```
 
 ![](../../img/geometria/_x/_x1.png)
 
 ![](../../img/geometria/_x/_x2.png)
 
-Nota bene:
+Osservazione:
 
-La funzione `$x` restituisce la coordinata `x` della geometria corrente purchè sia un POINT altrimenti restituisce NULL (vedi screenshot)
-
-Osservazioni:
-
-Per ottenere le coordinate x o y occorre utilizzare una combinazione di funzioni ed: x($geometry) che vale per qualunque tipologia di geometria (point, linestring, polygon)
+- La funzione [$x](#x) restituisce la coordinata `x` della geometria corrente purchè sia un POINT altrimenti restituisce NULL (vedi screenshot)
+- Per ottenere le coordinate `x` o `y` occorre utilizzare una combinazione di funzioni ed: `x($geometry)` che vale per qualunque tipologia di geometria (point, linestring, polygon)
 
 ---
 
@@ -171,13 +160,11 @@ Argomenti:
 
 Esempi:
 
-* `$x_at(1) → 12.6882843`
+```
+$x_at(1) → 12.6882843
+```
 
 ![](../../img/geometria/_x_at/_x_at1.png)
-
-Nota bene:
-
---
 
 Osservazioni:
 
@@ -195,19 +182,18 @@ Sintassi:
 
 Esempi:
 
-* `$y → 12.2568971`
+```
+$y → 12.2568971
+```
 
 ![](../../img/geometria/_y/_y1.png)
 
 ![](../../img/geometria/_y/_y2.png)
 
-Nota bene:
+Osservazione:
 
-La funzione `$y` restituisce la coordinata `y` della geometria corrente purchè sia un POINT altrimenti restituisce NULL (vedi screenshot)
-
-Osservazioni:
-
-Per ottenere le coordinate x o y occorre utilizzare una combinazione di funzioni es: y($geometry) che vale per qualunque tipologia di geometria (point, linestring, polygon)
+- La funzione [$y](#y_1) restituisce la coordinata `y` della geometria corrente purchè sia un POINT altrimenti restituisce NULL (vedi screenshot)
+- Per ottenere le coordinate x o y occorre utilizzare una combinazione di funzioni es: y($geometry) che vale per qualunque tipologia di geometria (point, linestring, polygon)
 
 ---
 
@@ -225,13 +211,11 @@ Argomenti:
 
 Esempi:
 
-* `$y_at(1) → 2`
+```
+$y_at(1) → 2
+```
 
 ![](../../img/geometria/_y_at/_y_at1.png)
-
-Nota bene:
-
---
 
 Osservazioni:
 
@@ -245,7 +229,7 @@ Restituisce l'angolo della bisettrice (angolo medio) della geometria per un vert
 
 Sintassi:
 
-angle_at_vertex(_<span style="color:red;">geometry</span>, <span style="color:red;">vertex</span>_)
+- angle_at_vertex(_<span style="color:red;">geometry</span>, <span style="color:red;">vertex</span>_)
 
 Argomenti:
 
@@ -254,17 +238,15 @@ Argomenti:
 
 Esempi:
 
-* `angle_at_vertex(geometry:=geom_from_wkt('LineString(0 0, 10 0, 10 10)'),vertex:=1) → 45.0`
+```
+angle_at_vertex(geometry:=geom_from_wkt('LineString(0 0, 10 0, 10 10)'),vertex:=1) → 45.0
+```
 
 ![](../../img/geometria/angle_at_vertex/angle_at_vertex1.png)
 
-Nota bene:
+Osservazione:
 
 Il primo ed ultimo vertice di una lineastring aperta la funzione restituisce il valore dell'angolo e non la bisettrice.
-
-Osservazioni:
-
---
 
 ![](../../img/geometria/angle_at_vertex/angle_at_vertex2.png)
 
@@ -276,7 +258,7 @@ Restituisce l'area di un oggetto a geometria poligonale. I calcoli sono sempre p
 
 Sintassi:
 
-area(_<span style="color:red;">geometry</span>_)
+- area(_<span style="color:red;">geometry</span>_)
 
 Argomenti:
 
@@ -284,18 +266,21 @@ Argomenti:
 
 Esempi:
 
+```
+area($geometry) → 1234.567
+```
+
 ![](../../img/geometria/area/area001.png)
 
 ![](../../img/geometria/area/area004.png)
 
 Nota bene:
 
-!!! Occhio
-	Se il _<span style="color:red;">SR del layer</span>_ in cui si sta calcolando l'area (_**area()**_) fosse un sistema proiettato (es:EPSG 3003/4; 32632/33/34 ecc..) l'unità di misura sarebbe il metro, invece se il _<span style="color:red;">SR del layer</span>_ fosse EPSG 4326, cioè un sistema geografico, allora l'unità di misura dell'area sarebbe in gradi e quindi poco comprensibile e valori piccoli.
+Se il _<span style="color:red;">SR del layer</span>_ in cui si sta calcolando l'area (_**area()**_) fosse un sistema proiettato (es:EPSG 3003/4; 32632/33/34 ecc..) l'unità di misura sarebbe il metro, invece se il _<span style="color:red;">SR del layer</span>_ fosse EPSG 4326, cioè un sistema geografico, allora l'unità di misura dell'area sarebbe in gradi e quindi poco comprensibile e valori piccoli.
 
 Osservazioni:
 
-in generale `area($geometry) <> $area`
+in generale area($geometry) <> $area
 
 ---
 
@@ -305,7 +290,7 @@ Restituisce l'azimut dal nord quale angolo in radianti misurato in senso orario 
 
 Sintassi:
 
-azimuth(<span style="color:red;">point_a</span>, <span style="color:red;">point_b</span>)
+- azimuth(<span style="color:red;">point_a</span>, <span style="color:red;">point_b</span>)
 
 Argomenti:
 
@@ -315,8 +300,8 @@ Argomenti:
 Esempi:
 
 ```
-* degrees( azimuth( make_point(25, 45), make_point(75, 100) ) ) → 42.273689
-* degrees( azimuth( make_point(75, 100), make_point(25,45) ) ) → 222.273689
+degrees( azimuth( make_point(25, 45), make_point(75, 100) ) ) → 42.273689
+degrees( azimuth( make_point(75, 100), make_point(25,45) ) ) → 222.273689
 ```
 
 ![](../../img/geometria/azimuth/azimuth003.png)
@@ -325,9 +310,9 @@ Esempi:
 
 ![](../../img/geometria/azimuth/azimuth002.png)
 
-Nota bene:
+Osservazione:
 
-**Azimuth** per definizione restituisce un angolo in radianti, per trasformarlo in gradi usare la funzione [degrees()](../matematica/degrees.md)
+Azimuth per definizione restituisce un angolo in radianti, per trasformarlo in gradi usare la funzione [degrees()](../matematica/degrees.md)
 
 ![](../../img/geometria/azimuth/azimuth004.png)
 
@@ -339,7 +324,7 @@ Restituisce l'area minima della combinazione dei confini della geometria (cioè 
 
 Sintassi:
 
-boundary(_<span style="color:red;">geometry</span>_)
+- boundary(_<span style="color:red;">geometry</span>_)
 
 Argomenti:
 
@@ -348,16 +333,13 @@ Argomenti:
 Esempi:
 
 ```
-- geom_to_wkt(boundary(geom_from_wkt('Polygon((1 1, 0 0, -1 1, 1 1))'))) → 'LineString(1 1,0 0,-1 1,1 1)'
-- geom_to_wkt(boundary(geom_from_wkt('LineString(1 1,0 0,-1 1)'))) → 'MultiPoint ((1 1),(-1 1))'
+geom_to_wkt(boundary(geom_from_wkt('Polygon((1 1, 0 0, -1 1, 1 1))'))) → 'LineString(1 1,0 0,-1 1,1 1)'
+geom_to_wkt(boundary(geom_from_wkt('LineString(1 1,0 0,-1 1)'))) → 'MultiPoint ((1 1),(-1 1))'
 ```
+
 ![](../../img/geometria/boundary/boundari0.png)
 
 ![](../../img/geometria/boundary/boundari1.png)
-
-Nota bene:
-
---
 
 Osservazioni:
 
@@ -373,7 +355,7 @@ Restituisce la geometria che rappresenta il perimetro di delimitazione di una ge
 
 Sintassi:
 
-bounds(*<span style="color:red;">geometry</span>*)
+- bounds(*<span style="color:red;">geometry</span>*)
 
 Argomenti:
 
@@ -382,16 +364,13 @@ Argomenti:
 Esempi:
 
 ```
-- bounds($geometry) → perimetro di delimitazione dell'elemento geometrico corrente
-- geom_to_wkt(bounds(geom_from_wkt('Polygon((1 1, 0 0, -1 1, 1 1))'))) → 'Polygon ((-1 0, 1 0, 1 1, -1 1, -1 0))'
+bounds($geometry) → perimetro di delimitazione dell'elemento geometrico corrente
+geom_to_wkt(bounds(geom_from_wkt('Polygon((1 1, 0 0, -1 1, 1 1))'))) → 'Polygon ((-1 0, 1 0, 1 1, -1 1, -1 0))'
 ```
+
 ![](../../img/geometria/bounds/bounds0.png)
 
 ![](../../img/geometria/bounds/bounds1.png)
-
-Nota bene:
-
---
 
 Osservazioni:
 
@@ -407,7 +386,7 @@ Restituisce l'altezza del perimetro di delimitazione di una geometria. I calcoli
 
 Sintassi:
 
-bounds_height(_<span style="color:red;">geometry</span>_)
+- bounds_height(_<span style="color:red;">geometry</span>_)
 
 Argomenti:
 
@@ -416,17 +395,13 @@ Argomenti:
 Esempi:
 
 ```
-- bounds_height($geometry) → altezza del perimetro di delimitazione dell'elemento geometrico corrente
-- bounds_height(geom_from_wkt('Polygon((1 1, 0 0, -1 1, 1 1))')) → 1
+bounds_height($geometry) → altezza del perimetro di delimitazione dell'elemento geometrico corrente
+bounds_height(geom_from_wkt('Polygon((1 1, 0 0, -1 1, 1 1))')) → 1
 ```
 
 ![](../../img/geometria/bounds/bounds_height0.png)
 
 ![](../../img/geometria/bounds/bounds_height1.png)
-
-Nota bene:
-
---
 
 Osservazioni:
 
@@ -440,23 +415,21 @@ Restituisce la larghezza del perimetro di delimitazione di una geometria. I calc
 
 Sintassi:
 
-bounds_width(*<span style="color:red;">geometry</span>*)
+- bounds_width(*<span style="color:red;">geometry</span>*)
 
 Argomenti:
 
-* *<span style="color:red;">geometry</span>* una geometria
+* <span style="color:red;">geometry</span> una geometria
 
 Esempi:
 
-`bounds_width($geometry) → larghezza del perimetro di delimitazione di $geometry`
+```
+bounds_width($geometry) → larghezza del perimetro di delimitazione di $geometry
+```
 
 ![](../../img/geometria/bounds/bounds_width0.png)
 
 ![](../../img/geometria/bounds/bounds_width1.png)
-
-Nota bene:
-
---
 
 Osservazioni:
 
@@ -470,7 +443,7 @@ Restituisce una geometria che rappresenta tutti i punti la cui distanza dalla ge
 
 Sintassi:
 
-buffer(*<span style="color:red;">geometry</span>*,*<span style="color:red;">distance</span>*[,_<span style="color:red;">segments=8</span>_])
+- buffer(*<span style="color:red;">geometry</span>*,*<span style="color:red;">distance</span>*[,_<span style="color:red;">segments=8</span>_])
 
 Argomenti:
 
@@ -480,19 +453,20 @@ Argomenti:
 
 Esempi:
 
-`buffer($geometry, 10.5) → poligono di $geometry bufferizzato di 10.5 unità`
+```
+buffer($geometry, 10.5) → poligono di $geometry bufferizzato di 10.5 unità
+```
 
 ![](../../img/geometria/buffer/buffer0.png)
 
 ![](../../img/geometria/buffer/buffer1.png)
 
+!!! Danger
+	Utilizzando SR proiettati l'unità di misura è il metro, mentre, per SR geografici è il grado, quindi attenzione al valore della distanza.
+
 Nota bene:
 
-Utilizzando SR proiettati l'unità di misura è il metro, mentre, per SR geografici è il grado, quindi attenzione al valore della distanza.
-
-Osservazioni:
-
-La Funzione restituisce SEMPRE un poligono sia per geometry **POINT**, **LINESTRING** o **POLYGON**
+La Funzione restituisce SEMPRE un poligono sia per geometry **POINT**, **LINESTRING** o **POLYGON
 
 ![](../../img/geometria/buffer/buffer2.png)
 
@@ -504,7 +478,7 @@ Crea un _buffer_ lungo una geometria _linestring_ in cui il diametro del buffer 
 
 Sintassi:
 
-buffer_by_m(_<span style="color:red;">geometry</span>, <span style="color:red;">segments</span>_)
+- buffer_by_m(_<span style="color:red;">geometry</span>, <span style="color:red;">segments</span>_)
 
 Argomenti:
 
@@ -515,7 +489,7 @@ Argomenti:
 Esempi:
 
 ```
-* buffer_by_m(geometry:=geom_from_wkt('LINESTRINGM(1 2 0.5, 4 2 0.2)'),segments:=8) → Un buffer di larghezza variabile che inizia con un diametro di 0,5 e termina con un diametro di 0,2 lungo la linea.
+buffer_by_m(geometry:=geom_from_wkt('LINESTRINGM(1 2 0.5, 4 2 0.2)'),segments:=8) → Un buffer di larghezza variabile che inizia con un diametro di 0,5 e termina con un diametro di 0,2 lungo la linea.
 ```
 
 ![](../../img/geometria/buffer_by_m/buffer_by_m1.png)
@@ -525,10 +499,6 @@ relativa all'esempio di sopra:
 ![](../../img/geometria/buffer_by_m/buffer_by_m2.png)
 
 ![](../../img/geometria/buffer_by_m/buffer_by_m3.png)
-
-Nota bene:
-
---
 
 Osservazioni:
 
@@ -542,7 +512,7 @@ Restituisce il centro geometrico di una geometria.
 
 Sintassi:
 
-centroid(*<span style="color:red;">geometry</span>*)
+- centroid(*<span style="color:red;">geometry</span>*)
 
 Argomenti:
 
@@ -550,19 +520,17 @@ Argomenti:
 
 Esempi:
 
-* `centroid($geometry) → una geometria punto`
+```
+centroid($geometry) → una geometria punto
+```
 
 ![](../../img/geometria/centroid/centroid0.png)
 
 ![](../../img/geometria/centroid/centroid1.png)
 
-Nota bene:
-
---
-
 Osservazioni:
 
-La Funzione restituisce SEMPRE una geometry **POINT**
+La Funzione restituisce SEMPRE una geometry **POINT
 
 ![](../../img/geometria/centroid/centroid2.png)
 
@@ -582,18 +550,12 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(close_line(geom_from_wkt('LINESTRING(0 0, 1 0, 1 1)'))) → LineString (0 0, 1 0, 1 1, 0 0)`
-* `geom_to_wkt(close_line(geom_from_wkt('LINESTRING(0 0, 1 0, 1 1, 0 0)'))) → LineString (0 0, 1 0, 1 1, 0 0)`
+```
+geom_to_wkt(close_line(geom_from_wkt('LINESTRING(0 0, 1 0, 1 1)'))) → LineString (0 0, 1 0, 1 1, 0 0)
+geom_to_wkt(close_line(geom_from_wkt('LINESTRING(0 0, 1 0, 1 1, 0 0)'))) → LineString (0 0, 1 0, 1 1, 0 0)
+```
 
 ![](../../img/geometria/close_line/close_line1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
-
---
 
 ---
 
@@ -603,7 +565,7 @@ Restituisce il punto sulla geometria1 che è più vicino alla geometria2.
 
 Sintassi:
 
-closest_point(_<span style="color:red;">geometry1</span>_, _<span style="color:red;">geometry2</span>)
+- closest_point(_<span style="color:red;">geometry1</span>_, _<span style="color:red;">geometry2</span>)
 
 Argomenti:
 
@@ -612,15 +574,13 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(closest_point(geom_from_wkt('LINESTRING (20 80, 98 190, 110 180, 50 75 )'),geom_from_wkt('POINT(100 100)'))) → Point(73.0769 115.384)`
+```
+geom_to_wkt(closest_point(geom_from_wkt('LINESTRING (20 80, 98 190, 110 180, 50 75 )'),geom_from_wkt('POINT(100 100)'))) → Point(73.0769 115.384)
+```
 
 ![](../../img/geometria/closest_point/closest_point1.png)
 
 ![](../../img/geometria/closest_point/closest_point2.png)
-
-Nota bene:
-
---
 
 Osservazioni:
 
@@ -652,7 +612,9 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(collect_geometries(make_point(1,2), make_point(3,4), make_point(5,6))) → 'MultiPoint ((1 2),(3 4),(5 6))'`
+```
+geom_to_wkt(collect_geometries(make_point(1,2), make_point(3,4), make_point(5,6))) → 'MultiPoint ((1 2),(3 4),(5 6))'
+```
 
 ![](../../img/geometria/collect_geometries/collect_geometries2.png)
 
@@ -669,13 +631,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(collect_geometries(array(make_point(1,2), make_point(3,4), make_point(5,6)))) → 'MultiPoint ((1 2),(3 4),(5 6))'`
+```
+geom_to_wkt(collect_geometries(array(make_point(1,2), make_point(3,4), make_point(5,6)))) → 'MultiPoint ((1 2),(3 4),(5 6))'
+```
 
 ![](../../img/geometria/collect_geometries/collect_geometries1.png)
-
-Nota bene:
-
---
 
 Osservazioni:
 
@@ -689,7 +649,7 @@ Restituisce la combinazione di due geometrie.
 
 Sintassi:
 
-combine(_<span style="color:red;">geometry1</span>, <span style="color:red;">geometry2</span>_)
+- combine(_<span style="color:red;">geometry1</span>, <span style="color:red;">geometry2</span>_)
 
 Argomenti:
 
@@ -698,18 +658,12 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt( combine( geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 2 1)' ) ) ) → MULTILINESTRING((4 4, 2 1), (3 3, 4 4), (4 4, 5 5))`
-* `geom_to_wkt( combine( geom_from_wkt( 'LINESTRING(3 3, 4 4)' ), geom_from_wkt( 'LINESTRING(3 3, 6 6, 2 1)' ) ) ) → LINESTRING(3 3, 4 4, 6 6, 2 1)`
+```
+geom_to_wkt( combine( geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 2 1)' ) ) ) → MULTILINESTRING((4 4, 2 1), (3 3, 4 4), (4 4, 5 5))
+geom_to_wkt( combine( geom_from_wkt( 'LINESTRING(3 3, 4 4)' ), geom_from_wkt( 'LINESTRING(3 3, 6 6, 2 1)' ) ) ) → LINESTRING(3 3, 4 4, 6 6, 2 1)
+```
 
 ![](../../img/geometria/combine/combine1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
-
---
 
 ---
 
@@ -728,36 +682,31 @@ Argomenti:
 
 Esempi:
 
-
-* `contains( geom_from_wkt( 'POLYGON((0 0, 0 1, 1 1, 1 0, 0 0))' ), geom_from_wkt( 'POINT(0.5 0.5 )' ) ) → vero`
-* `contains( geom_from_wkt( 'POLYGON((0 0, 0 1, 1 1, 1 0, 0 0))' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → falso`
-
+```
+contains( geom_from_wkt( 'POLYGON((0 0, 0 1, 1 1, 1 0, 0 0))' ), geom_from_wkt( 'POINT(0.5 0.5 )' ) ) → vero
+contains( geom_from_wkt( 'POLYGON((0 0, 0 1, 1 1, 1 0, 0 0))' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → falso
+```
 
 ![](../../img/geometria/contains/contains1.png)
 
-Nota bene:
-
---
-
 Osservazioni:
 
-Usando algoritmo `Seleziona per espressione` presente in strumenti di processing oppure ![icona](https://docs.qgis.org/2.18/en/_images/mIconExpressionSelect.png) (ctrl+F3):
+Usando algoritmo `Seleziona per espressione` presente in strumenti di processing oppure ![icona](https://docs.qgis.org/2.18/en/_images/mIconExpressionSelect.png) (Ctrl+F3):
 
-espressione usata:
-
-`contains(geometry(get_feature( 'province_rt_rt','pk_uid','46')),$geometry)`
+```
+contains(geometry(get_feature( 'province_rt_rt','pk_uid','46')),$geometry)
+```
 
 dove:
 
-* _geometry a_ è `geometry(get_feature( 'province_rt_rt','pk_uid','46'))`
-* _geometry b_ è `$geometry`
-
+* _geometry1_ è `geometry(get_feature( 'province_rt_rt','pk_uid','46'))`
+* _geometry2_ è `$geometry`
 
 ![](../../img/geometria/contains/contains2.png)
 
 seleziono tutti i comuni `contains` (contenuti) nella provincia con `pk_uid`46 (Lucca)
 
-**PS:** potrei anche negare (`NOT`) l'espressione per selezionare il complementare (tutti i comuni tranne quelli contenuti nella provincia di Lucca).
+PS:** potrei anche negare (`NOT`) l'espressione per selezionare il complementare (tutti i comuni tranne quelli contenuti nella provincia di Lucca).
 
 `NOT contains(geometry(get_feature( 'province_rt_rt','pk_uid','46')),$geometry)`
 
@@ -777,13 +726,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt( convex_hull( geom_from_wkt( 'LINESTRING(3 3, 4 4, 4 10)' ) ) ) → POLYGON((3 3,4 10,4 4,3 3))`
+```
+geom_to_wkt( convex_hull( geom_from_wkt( 'LINESTRING(3 3, 4 4, 4 10)' ) ) ) → POLYGON((3 3,4 10,4 4,3 3))
+```
 
 ![](../../img/geometria/convex_hull/convex_hull1.png)
-
-Nota bene:
-
---
 
 Osservazioni:
 
@@ -808,33 +755,30 @@ Argomenti:
 
 Esempi:
 
-* `crosses( geom_from_wkt( 'LINESTRING(3 5, 4 4, 5 3)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → vero`
-* `crosses( geom_from_wkt( 'POINT(4 5)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → falso`
+```
+crosses( geom_from_wkt( 'LINESTRING(3 5, 4 4, 5 3)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → vero
+crosses( geom_from_wkt( 'POINT(4 5)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → falso
+```
 
 ![](../../img/geometria/crosses/crosses1.png)
 
-Nota bene:
-
---
-
 Osservazioni:
 
-Usando algoritmo `Seleziona per espressione` presente in strumenti di processing oppure ![icona](https://docs.qgis.org/2.18/en/_images/mIconExpressionSelect.png) (ctrl+F3):
-espressione usata:
+Usando algoritmo `Seleziona per espressione` presente in strumenti di processing oppure ![icona](https://docs.qgis.org/2.18/en/_images/mIconExpressionSelect.png) (Ctrl+F3):
 
-`crosses(geometry(get_feature( 'fiume_arno','nome','ARNO')), $geometry)`
-
+```
+crosses(geometry(get_feature( 'fiume_arno','nome','ARNO')), $geometry)
+```
 dove:
 
-* _geometry a_ è `geometry(get_feature( 'fiume_arno','nome','ARNO'))`
-* _geometry b_ è `$geometry`
-
+* _geometry1_ è `geometry(get_feature( 'fiume_arno','nome','ARNO'))`
+* _geometry2_ è `$geometry`
 
 ![](../../img/geometria/crosses/crosses2.png)
 
 seleziono tutti i comuni `crosses` (attraversati) dal fiume ARNO
 
-**PS:** potrei anche negare (`NOT`) l'espressione per selezionare il complementare (tutti i comuni tranne quelli attraversati dal fiume ARNO).
+PS:** potrei anche negare (`NOT`) l'espressione per selezionare il complementare (tutti i comuni tranne quelli attraversati dal fiume ARNO).
 
 `NOT crosses(geometry(get_feature( 'fiume_arno','nome','ARNO')), $geometry)`
 
@@ -855,7 +799,9 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt( difference( geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4)' ) ) ) → LINESTRING(4 4, 5 5)`
+```
+geom_to_wkt( difference( geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4)' ) ) ) → LINESTRING(4 4, 5 5)
+```
 
 ![](../../img/geometria/difference/difference1.png)
 
@@ -863,51 +809,44 @@ Esempi:
 
 Espressione:
 
+!!! Tip "Espressione"
 ```
--- differenza linea a - linea b
-difference( 
-make_line(  -- linea a
-	start_point(geometry(get_feature_by_id('linea_a',0))), 
-	start_point($geometry),
-	end_point(geometry(get_feature_by_id('linea_a',0)))),
-make_line(  -- linea b
-	start_point($geometry), 
-	end_point(geometry(get_feature_by_id('linea_a',0))),
-	end_point($geometry))
-				)
--- NB: -- è importante ordine delle geometrie
--- a - b è diverso da b - a
+	-- differenza linea a - linea b
+	difference( 
+	make_line(  -- linea a
+		start_point(geometry(get_feature_by_id('linea_a',0))), 
+		start_point($geometry),
+		end_point(geometry(get_feature_by_id('linea_a',0)))),
+	make_line(  -- linea b
+		start_point($geometry), 
+		end_point(geometry(get_feature_by_id('linea_a',0))),
+		end_point($geometry))
+					)
+	-- NB: -- è importante ordine delle geometrie
+	-- a - b è diverso da b - a
 ```
 
 ![](../../img/geometria/difference/difference32.png)
 
+!!! Tip "Espressione"
 ```
--- differenza linea b - linea a
-difference( 
-make_line( -- linea b
-	start_point($geometry), 
-	end_point(geometry(get_feature_by_id('linea_a',0))),
-	end_point($geometry)),
-make_line(  -- linea a
-	start_point(geometry(get_feature_by_id('linea_a',0))), 
-	start_point($geometry),
-	end_point(geometry(get_feature_by_id('linea_a',0))))
-				)
--- NB: -- è importante ordine delle geometrie
--- a - b è diverso da b - a
+	-- differenza linea b - linea a
+	difference( 
+	make_line( -- linea b
+		start_point($geometry), 
+		end_point(geometry(get_feature_by_id('linea_a',0))),
+		end_point($geometry)),
+	make_line(  -- linea a
+		start_point(geometry(get_feature_by_id('linea_a',0))), 
+		start_point($geometry),
+		end_point(geometry(get_feature_by_id('linea_a',0))))
+					)
+	-- NB: -- è importante ordine delle geometrie
+	-- a - b è diverso da b - a
 ```
 
-prova tu:
-
-[Dati e progetto qgz](https://github.com/gbvitrano/HfcQGIS/raw/master/prova_tu/DIFFERENCE.zip)
-
-Nota bene:
-
---
-
-Osservazioni:
-
---
+!!! Question "Prova tu"
+	[Dati e progetto qgz](https://github.com/gbvitrano/HfcQGIS/raw/master/prova_tu/DIFFERENCE.zip)
 
 Esempio di sopra:
 
@@ -930,22 +869,24 @@ Argomenti:
 
 Esempi:
 
-* `disjoint( geom_from_wkt( 'POLYGON((0 0, 0 1, 1 1, 1 0, 0 0 ))' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → vero`
-* `disjoint( geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ), geom_from_wkt( 'POINT(4 4)' )) → falso`
+```
+disjoint( geom_from_wkt( 'POLYGON((0 0, 0 1, 1 1, 1 0, 0 0 ))' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → vero
+disjoint( geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ), geom_from_wkt( 'POINT(4 4)' )) → falso
+```
 
 ![](../../img/geometria/disjoint/disjoint.png)
 
-Nota bene:
+Osservazione:
 
 Vero = 1; Falso= 0
 
 Osservazioni:
 
-Usando algoritmo `Seleziona per espressione` presente in strumenti di processing oppure ![icona](https://docs.qgis.org/2.18/en/_images/mIconExpressionSelect.png) (ctrl+F3):
+Usando algoritmo `Seleziona per espressione` presente in strumenti di processing oppure ![icona](https://docs.qgis.org/2.18/en/_images/mIconExpressionSelect.png) (Ctrl+F3):
 
-espressione usata:
-
-`disjoint(geometry(get_feature( 'fiume_arno','nome','ARNO')), $geometry)`
+```
+disjoint(geometry(get_feature( 'fiume_arno','nome','ARNO')), $geometry)
+```
 
 dove:
 
@@ -975,13 +916,11 @@ Argomenti:
 
 Esempi:
 
+```
+distance( geom_from_wkt( 'POINT(4 4)' ), geom_from_wkt( 'POINT(4 8)' ) ) → 4
+```
+
 ![](../../img/geometria/distance/distance1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -1005,15 +944,11 @@ Argomenti:
 
 Esempi:
 
-* `distance_to_vertex(geometry:=geom_from_wkt('LineString(0 0, 10 0, 10 10)'),vertex:=1) → 10.0`
+```
+distance_to_vertex(geometry:=geom_from_wkt('LineString(0 0, 10 0, 10 10)'),vertex:=1) → 10.0
+```
 
 ![](../../img/geometria/distance_to_vertex/distance_to_vertex1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -1037,15 +972,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(end_point(geom_from_wkt('LINESTRING(4 0, 4 2, 0 2)'))) → 'Point (0 2)'`
+```
+geom_to_wkt(end_point(geom_from_wkt('LINESTRING(4 0, 4 2, 0 2)'))) → 'Point (0 2)'
+```
 
 ![](../../img/geometria/end_point/end_point1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -1077,17 +1008,11 @@ Argomenti:
 Esempi:
 
 ```
-* geom_to_wkt(extend(geom_from_wkt('LineString(0 0, 1 0, 1 1)'),1,2)) → 'LineString (-1 0, 1 0, 1 3)'
-* geom_to_wkt(extend(geom_from_wkt('MultiLineString((0 0, 1 0, 1 1), (2 2, 0 2, 0 5))'),1,2)) → 'MultiLineString ((-1 0, 1 0, 1 3),(3 2, 0 2, 0 7))'
+geom_to_wkt(extend(geom_from_wkt('LineString(0 0, 1 0, 1 1)'),1,2)) → 'LineString (-1 0, 1 0, 1 3)'
+geom_to_wkt(extend(geom_from_wkt('MultiLineString((0 0, 1 0, 1 1), (2 2, 0 2, 0 5))'),1,2)) → 'MultiLineString ((-1 0, 1 0, 1 3),(3 2, 0 2, 0 7))'
 ```
 
 ![](../../img/geometria/extend/extend1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -1110,15 +1035,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(exterior_ring(geom_from_wkt('POLYGON((-1 -1, 4 0, 4 2, 0 2, -1 -1),( 0.1 0.1, 0.1 0.2, 0.2 0.2, 0.2, 0.1, 0.1 0.1))'))) → 'LineString (-1 -1, 4 0, 4 2, 0 2, -1 -1)'`
+```
+geom_to_wkt(exterior_ring(geom_from_wkt('POLYGON((-1 -1, 4 0, 4 2, 0 2, -1 -1),( 0.1 0.1, 0.1 0.2, 0.2 0.2, 0.2, 0.1, 0.1 0.1))'))) → 'LineString (-1 -1, 4 0, 4 2, 0 2, -1 -1)'
+```
 
 ![](../../img/geometria/exterior_ring/exterior_ring1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -1143,18 +1064,16 @@ Argomenti:
 
 Esempi:
 
-* `extrude(geom_from_wkt('LineString(1 2, 3 2, 4 3)'), 1, 2) → Polygon ((1 2, 3 2, 4 3, 5 5, 4 4, 2 4, 1 2))`
-* `extrude(geom_from_wkt('MultiLineString((1 2, 3 2), (4 3, 8 3)'), 1, 2) → MultiPolygon (((1 2, 3 2, 4 4, 2 4, 1 2)),((4 3, 8 3, 9 5, 5 5, 4 3)))`
+```
+extrude(geom_from_wkt('LineString(1 2, 3 2, 4 3)'), 1, 2) → Polygon ((1 2, 3 2, 4 3, 5 5, 4 4, 2 4, 1 2))
+extrude(geom_from_wkt('MultiLineString((1 2, 3 2), (4 3, 8 3)'), 1, 2) → MultiPolygon (((1 2, 3 2, 4 4, 2 4, 1 2)),((4 3, 8 3, 9 5, 5 5, 4 3)))
+```
 
 ![](../../img/geometria/extrude/extrude1.png)
 
-Nota bene:
-
---
-
 Osservazioni:
 
-Nell'esempio ho utilizzato la funzione [boundary()](boundary.md) perché la geometria di ingresso deve essere lineare.
+	Nell'esempio ho utilizzato la funzione [boundary()](boundary.md) perché la geometria di ingresso deve essere lineare.
 
 ![](../../img/geometria/extrude/extrude1.png)
 
@@ -1174,15 +1093,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(flip_coordinates(make_point(1, 2))) → Point (2 1)`
+```
+geom_to_wkt(flip_coordinates(make_point(1, 2))) → Point (2 1)
+```
 
 ![](../../img/geometria/flip_coordinates/flip_coordinates1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -1210,17 +1125,15 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(force_rhr(geometry:=geom_from_wkt('POLYGON((-1 -1, 4 0, 4 2, 0 2, -1 -1))'))) → Polygon ((-1 -1, 0 2, 4 2, 4 0, -1 -1))`
+```
+geom_to_wkt(force_rhr(geometry:=geom_from_wkt('POLYGON((-1 -1, 4 0, 4 2, 0 2, -1 -1))'))) → Polygon ((-1 -1, 0 2, 4 2, 4 0, -1 -1))
+```
 
 ![](../../img/geometria/force_rhr/force_rhr1.png)
 
-Nota bene:
-
---
-
 Osservazioni:
 
-Ecco un esempio pratico della funzione (presente anche nelgli strumenti fi processing) ovvero un poligono disegnato in senso antiorario viene forzato in senso orario e l'etichettature è visibile correttamente.
+	Ecco un esempio pratico della funzione (presente anche nelgli strumenti fi processing) ovvero un poligono disegnato in senso antiorario viene forzato in senso orario e l'etichettature è visibile correttamente.
 
 ![](../../img/geometria/force_rhr/force_rhr.gif)
 
@@ -1240,15 +1153,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(geom_from_gml('<gml:LineString srsName="EPSG:4326"><gml:coordinates>4,4 5,5 6,6</gml:coordinates></gml:LineString>') )  → 'LineString (4 4, 5 5, 6 6)'`
+```
+geom_to_wkt(geom_from_gml('<gml:LineString srsName="EPSG:4326"><gml:coordinates>4,4 5,5 6,6</gml:coordinates></gml:LineString>') )  → 'LineString (4 4, 5 5, 6 6)'
+```
 
 ![](../../img/geometria/geom_from_gml/geom_from_gml1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -1266,17 +1175,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_from_wkb( geom_to_wkb( make_point(4,5) ) ) → un oggetto geometria punto`
+```
+geom_from_wkb( geom_to_wkb( make_point(4,5) ) ) → un oggetto geometria punto
+```
 
 ![](../../img/geometria/geom_from_wkb/geom_from_wkb1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
-
---
 
 ---
 
@@ -1295,15 +1198,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_from_wkt( 'POINT(4 5)' ) → un oggetto geometria`
+```
+geom_from_wkt( 'POINT(4 5)' ) → un oggetto geometria
+```
 
 ![](../../img/geometria/geom_from_wkt/geom_from_wkt1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -1321,15 +1220,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkb( $geometry ) → BLOB binario contenente un oggetto geometria`
+```
+geom_to_wkb( $geometry ) → BLOB binario contenente un oggetto geometria
+```
 
 ![](../../img/geometria/geom_to_wkb/geom_to_wkb1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -1348,18 +1243,12 @@ Argomenti:
 Esempi:
 
 ```
-* geom_to_wkt( make_point(6, 50) ) → 'POINT(6 50)'
-* geom_to_wkt(centroid(geom_from_wkt('Polygon((1 1, 0 0, -1 1, 1 1))'))) → 'POINT(0 0.66666667)'
-* geom_to_wkt(centroid(geom_from_wkt('Polygon((1 1, 0 0, -1 1, 1 1))')), 2) → 'POINT(0 0.67)'
+geom_to_wkt( make_point(6, 50) ) → 'POINT(6 50)'
+geom_to_wkt(centroid(geom_from_wkt('Polygon((1 1, 0 0, -1 1, 1 1))'))) → 'POINT(0 0.66666667)'
+geom_to_wkt(centroid(geom_from_wkt('Polygon((1 1, 0 0, -1 1, 1 1))')), 2) → 'POINT(0 0.67)'
 ```
 
 ![](../../img/geometria/geom_to_wkt/geom_to_wkt1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -1377,16 +1266,12 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt( geometry( get_feature( layer, attributeField, value ) ) ) → 'POINT(6 50)'`
-* `intersects( $geometry, geometry( get_feature( layer, attributeField, value ) ) ) → vero`
+```
+geom_to_wkt( geometry( get_feature( layer, attributeField, value ) ) ) → 'POINT(6 50)'`
+intersects( $geometry, geometry( get_feature( layer, attributeField, value ) ) ) → vero`
+```
 
 ![](../../img/geometria/geometry/geometry1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -1411,25 +1296,20 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(geometry_n(geom_from_wkt('GEOMETRYCOLLECTION(POINT(0 1), POINT(0 0), POINT(1 0), POINT(1 1))'),3)) → 'Point (1 0)'`
+```
+geom_to_wkt(geometry_n(geom_from_wkt('GEOMETRYCOLLECTION(POINT(0 1), POINT(0 0), POINT(1 0), POINT(1 1))'),3)) → 'Point (1 0)'
+```
 
 ![](../../img/geometria/geometry_n/geometry_n1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
 ## hausdorff_distance
 
-Restituisce la distanza di _Hausdorff_ tra due geometrie. Questa è in sostanza una misura di come le 2 geometrie sono simili o dissimili: una distanza più bassa indica geometrie più simili. 
-La funzione può essere eseguita con un argomento opzionale di densificazione della frazione. Se non viene specificato, viene utilizzata una approssimazione alla distanza standard di Hausdorff. Questa approssimazione è esatta o abbastanza vicina per un grande sottoinsieme di casi utili. Esempi di questi sono: 
+Restituisce la distanza di _Hausdorff_ tra due geometrie. Questa è in sostanza una misura di come le 2 geometrie sono simili o dissimili: una distanza più bassa indica geometrie più simili. La funzione può essere eseguita con un argomento opzionale di densificazione della frazione. Se non viene specificato, viene utilizzata una approssimazione alla distanza standard di Hausdorff. Questa approssimazione è esatta o abbastanza vicina per un grande sottoinsieme di casi utili. Esempi di questi sono:
 
-* calcolare la distanza tra Linestrings che sono approssimativamente paralleli tra loro e sono sostanzialmente uguali in lunghezza. Ciò si verifica nelle verifica di reti lineari. 
-* testare la somiglianza di geometrie. 
+  * calcolare la distanza tra Linestrings che sono approssimativamente paralleli tra loro e sono sostanzialmente uguali in lunghezza. Ciò si verifica nelle verifica di reti lineari. 
+  * testare la somiglianza di geometrie. 
 
 Se l'approssimazione predefinita fornita da questo metodo è insufficiente, specifica l'argomento opzionale di densificazione della frazione. Specificando questo argomento si esegue una densificazione del segmento prima di calcolare la distanza Hausdorff discreta. Il parametro imposta la frazione con cui densificare ogni segmento. Ogni segmento sarà suddiviso in un numero di subsegmenti di uguale lunghezza, la cui frazione della lunghezza totale è la più vicina alla frazione data. Riducendo il parametro di densificazione della frazione, la distanza restituita si avvicinerà alla vera distanza Hausdorff per le geometrie.
 
@@ -1445,37 +1325,34 @@ Argomenti:
 
 Esempi:
 
-* `hausdorff_distance( geometry1:= geom_from_wkt('LINESTRING (0 0, 2 1)'),geometry2:=geom_from_wkt('LINESTRING (0 0, 2 0)')) → 2`
-* `hausdorff_distance( geom_from_wkt('LINESTRING (130 0, 0 0, 0 150)'),geom_from_wkt('LINESTRING (10 10, 10 150, 130 10)')) → 14.142135623`
-* `hausdorff_distance( geom_from_wkt('LINESTRING (130 0, 0 0, 0 150)'),geom_from_wkt('LINESTRING (10 10, 10 150, 130 10)'),0.5) → 70.0`
+```
+hausdorff_distance( geometry1:= geom_from_wkt('LINESTRING (0 0, 2 1)'),geometry2:=geom_from_wkt('LINESTRING (0 0, 2 0)')) → 2
+hausdorff_distance( geom_from_wkt('LINESTRING (130 0, 0 0, 0 150)'),geom_from_wkt('LINESTRING (10 10, 10 150, 130 10)')) → 14.142135623
+hausdorff_distance( geom_from_wkt('LINESTRING (130 0, 0 0, 0 150)'),geom_from_wkt('LINESTRING (10 10, 10 150, 130 10)'),0.5) → 70.0
+```
 
 ![](../../img/geometria/hausdorff_distance/hausdorff_distance1.png)
 
-Nota bene:
-
 --
 
-Osservazioni:
+Nel caso di geometrie puntuali la [hausdorff_distance](#hausdorff_distance) coincide con la funzione [distance](#distance), segue un esempio:
 
---
-
-Nel caso di geometrie puntuali la `hausdorff_distance` coincide con la funzione `distance`, segue un esempio:
-
+!!! Tip "Espressione"
 ```
-format_number(
-hausdorff_distance( 
-transform($geometry,'EPSG:4326','EPSG:3004'), 
-transform(geometry(get_feature('fontanelle','n',1)),'EPSG:4326','EPSG:3004'))/1000,4) || ' km'  
-|| '\n'|| 
-format_number(
-distance( 
-transform($geometry,'EPSG:4326','EPSG:3004'), 
-transform(geometry(get_feature('fontanelle','n',1)),'EPSG:4326','EPSG:3004'))/1000,4) || ' km'
+	format_number(
+	hausdorff_distance( 
+	transform($geometry,'EPSG:4326','EPSG:3004'), 
+	transform(geometry(get_feature('fontanelle','n',1)),'EPSG:4326','EPSG:3004'))/1000,4) || ' km'  
+	|| '\n'|| 
+	format_number(
+	distance( 
+	transform($geometry,'EPSG:4326','EPSG:3004'), 
+	transform(geometry(get_feature('fontanelle','n',1)),'EPSG:4326','EPSG:3004'))/1000,4) || ' km'
 ```
 
 ![](../../img/geometria/hausdorff_distance/hausdorff_distance3.png)
 
----
+--
 
 In questo esempio confronto due layer: il numero più piccolo indica il poligono più simile a al poligono più grande.
 
@@ -1498,18 +1375,14 @@ Argomenti:
 
 Esempi:
 
-* `inclination( make_point( 5, 10, 0 ), make_point( 5, 10, 5 ) ) → 0.0`
-* `inclination( make_point( 5, 10, 0 ), make_point( 5, 10, 0 ) ) → 90.0`
-* `inclination( make_point( 5, 10, 0 ), make_point( 50, 100, 0 ) ) → 90.0`
-* `inclination( make_point( 5, 10, 0 ), make_point( 5, 10, -5 ) ) → 180.0`
+```
+inclination( make_point( 5, 10, 0 ), make_point( 5, 10, 5 ) ) → 0.0
+inclination( make_point( 5, 10, 0 ), make_point( 5, 10, 0 ) ) → 90.0
+inclination( make_point( 5, 10, 0 ), make_point( 50, 100, 0 ) ) → 90.0
+inclination( make_point( 5, 10, 0 ), make_point( 5, 10, -5 ) ) → 180.0
+```
 
 ![](../../img/geometria/inclination/inclination1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -1532,13 +1405,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(interior_ring_n(geom_from_wkt('POLYGON((-1 -1, 4 0, 4 2, 0 2, -1 -1),(-0.1 -0.1, 0.4 0, 0.4 0.2, 0 0.2, -0.1 -0.1),(-1 -1, 4 0, 4 2, 0 2, -1 -1))'),1)) → 'LineString (-0.1 -0.1, 0.4 0, 0.4 0.2, 0 0.2, -0.1 -0.1))'`
+```
+geom_to_wkt(interior_ring_n(geom_from_wkt('POLYGON((-1 -1, 4 0, 4 2, 0 2, -1 -1),(-0.1 -0.1, 0.4 0, 0.4 0.2, 0 0.2, -0.1 -0.1),(-1 -1, 4 0, 4 2, 0 2, -1 -1))'),1)) → 'LineString (-0.1 -0.1, 0.4 0, 0.4 0.2, 0 0.2, -0.1 -0.1))'
+```
 
 ![](../../img/geometria/interior_ring_n/interior_ring_n1.png)
-
-Nota bene:
-
---
 
 Osservazioni:
 
@@ -1564,40 +1435,32 @@ Argomenti:
 Esempi:
 
 ```
-* geom_to_wkt( intersection( geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4)' ) ) ) → 'LINESTRING(3 3, 4 4)'
-* geom_to_wkt( intersection( geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ), geom_from_wkt( 'MULTIPOINT(3.5 3.5, 4 5)' ) ) ) → 'POINT(3.5 3.5)'
+geom_to_wkt( intersection( geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4)' ) ) ) → 'LINESTRING(3 3, 4 4)'
+geom_to_wkt( intersection( geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ), geom_from_wkt( 'MULTIPOINT(3.5 3.5, 4 5)' ) ) ) → 'POINT(3.5 3.5)'
 ```
 
 ![](../../img/geometria/intersection/intersection1.png)
 
 ![](../../img/geometria/intersection/intersection3.png)
 
-Espressione:
-
+!!! Tip "Espressione"
 ```
--- intersezione tra le due linee
-intersection( 
-make_line( -- linea a
-	start_point($geometry), 
-	end_point(geometry(get_feature_by_id('linea_a',0))),
-	end_point($geometry)),
-make_line(  -- linea b
-	start_point(geometry(get_feature_by_id('linea_a',0))), 
-	start_point($geometry),
-	end_point(geometry(get_feature_by_id('linea_a',0))))
-				)
--- NB: -- l' ordine delle geometrie è indifferente
+	-- intersezione tra le due linee
+	intersection( 
+	make_line( -- linea a
+		start_point($geometry), 
+		end_point(geometry(get_feature_by_id('linea_a',0))),
+		end_point($geometry)),
+	make_line(  -- linea b
+		start_point(geometry(get_feature_by_id('linea_a',0))), 
+		start_point($geometry),
+		end_point(geometry(get_feature_by_id('linea_a',0))))
+					)
+	-- NB: -- l' ordine delle geometrie è indifferente
 ```
 
-prova tu:
-
-[Dati e progetto qgz](https://github.com/gbvitrano/HfcQGIS/raw/master/prova_tu/DIFFERENCE.zip)
-
-Nota bene:
-
---
-
-Osservazioni:
+!!! Question "Prova tu"
+	[Dati e progetto qgz](https://github.com/gbvitrano/HfcQGIS/raw/master/prova_tu/DIFFERENCE.zip)
 
 --
 
@@ -1620,34 +1483,32 @@ Argomenti:
 
 Esempi:
 
-* `intersects( geom_from_wkt( 'POINT(4 4)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → vero`
-* `intersects( geom_from_wkt( 'POINT(4 5)' ), geom_from_wkt( 'POINT(5 5)' ) ) → falso`
+```
+intersects( geom_from_wkt( 'POINT(4 4)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → vero
+intersects( geom_from_wkt( 'POINT(4 5)' ), geom_from_wkt( 'POINT(5 5)' ) ) → falso
+```
 
 ![](../../img/geometria/intersects/intersects1.png)
 
-Nota bene:
-
---
-
 Osservazioni:
 
-Usando algoritmo `Seleziona per espressione` presente in strumenti di processing oppure ![icona](https://docs.qgis.org/2.18/en/_images/mIconExpressionSelect.png) (ctrl+F3):
+Usando algoritmo `Seleziona per espressione` presente in strumenti di processing oppure ![icona](https://docs.qgis.org/2.18/en/_images/mIconExpressionSelect.png) (Ctrl+F3):
 
-espressione usata:
-
-`intersects(geometry(get_feature( 'province_rt_rt','pk_uid','46')),$geometry)`
+```
+intersects(geometry(get_feature( 'province_rt_rt','pk_uid','46')),$geometry)
+```
 
 dove:
 
-* _geometry a_ è `geometry(get_feature( 'province_rt_rt','pk_uid','46'))`
-* _geometry b_ è `$geometry`
+* _geometry1_ è `geometry(get_feature( 'province_rt_rt','pk_uid','46'))`
+* _geometry2_ è `$geometry`
 
 
 ![](../../img/geometria/intersects/intersects2.png)
 
 seleziono tutti i comuni `intersects` (interseca) nella provincia con `pk_uid`46 (Lucca)
 
-**PS:** potrei anche negare (`NOT`) l'espressione per selezionare il complementare (tutti i comuni tranne quelli intersecati con la provincia di Lucca).
+PS:** potrei anche negare (`NOT`) l'espressione per selezionare il complementare (tutti i comuni tranne quelli intersecati con la provincia di Lucca).
 
 `NOT intersects(geometry(get_feature( 'province_rt_rt','pk_uid','46')),$geometry)`
 
@@ -1668,16 +1529,11 @@ Argomenti:
 
 Esempi:
 
-* `intersects_bbox( geom_from_wkt( 'POINT(4 5)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → vero`
-* `intersects_bbox( geom_from_wkt( 'POINT(6 5)' ), geom_from_wkt( 'POLYGON((3 3, 4 4, 5 5, 3 3))' ) ) → falso`
-
+```
+intersects_bbox( geom_from_wkt( 'POINT(4 5)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → vero
+intersects_bbox( geom_from_wkt( 'POINT(6 5)' ), geom_from_wkt( 'POLYGON((3 3, 4 4, 5 5, 3 3))' ) ) → falso
+```
 ![](../../img/geometria/intersects_bbox/intersects_bbox1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -1695,16 +1551,12 @@ Argomenti:
 
 Esempi:
 
-* `is_closed(geom_from_wkt('LINESTRING(0 0, 1 1, 2 2)')) → falso`
-* `is_closed(geom_from_wkt('LINESTRING(0 0, 1 1, 2 2, 0 0)')) → vero`
+```
+is_closed(geom_from_wkt('LINESTRING(0 0, 1 1, 2 2)')) → falso
+is_closed(geom_from_wkt('LINESTRING(0 0, 1 1, 2 2, 0 0)')) → vero
+```
 
 ![](../../img/geometria/is_closed/is_closed1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -1726,18 +1578,14 @@ Argomenti:
 
 Esempi:
 
-* `is_empty(geom_from_wkt('LINESTRING(0 0, 1 1, 2 2)')) → falso`
-* `is_empty(geom_from_wkt('LINESTRING EMPTY')) → vero`
-* `is_empty(geom_from_wkt('POINT(7 4)')) → falso`
-* `is_empty(geom_from_wkt('POINT EMPTY')) → vero`
+```
+is_empty(geom_from_wkt('LINESTRING(0 0, 1 1, 2 2)')) → falso
+is_empty(geom_from_wkt('LINESTRING EMPTY')) → vero
+is_empty(geom_from_wkt('POINT(7 4)')) → falso
+is_empty(geom_from_wkt('POINT EMPTY')) → vero
+```
 
 ![](../../img/geometria/is_empty/is_empty1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ![screen](../../img/novita_312/Image02.png)
 
@@ -1757,18 +1605,13 @@ Argomenti:
 
 Esempi:
 
-* `is_empty_or_null(geom_from_wkt('LINESTRING(0 0, 1 1, 2 2)')) → falso`
-* `is_empty_or_null(geom_from_wkt('LINESTRING EMPTY')) → vero`
-* `is_empty_or_null(geom_from_wkt('POINT(7 4)')) → falso`
-* `is_empty_or_null(geom_from_wkt('POINT EMPTY')) → vero`
+```
+is_empty_or_null(geom_from_wkt('LINESTRING(0 0, 1 1, 2 2)')) → falso
+iis_empty_or_null(geom_from_wkt('POINT(7 4)')) → falso
+is_empty_or_null(geom_from_wkt('POINT EMPTY')) → vero
+```
 
 ![](../../img/geometria/is_empty_or_null/is_empty_or_null1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ![screen](../../img/novita_312/Image02.png)
 
@@ -1788,16 +1631,12 @@ Argomenti:
 
 Esempi:
 
-* `is_multipart(geom_from_wkt('MULTIPOINT ((0 0),(1 1),(2 2))')) → vero`
-* `is_multipart(geom_from_wkt('POINT (0 0)')) → falso`
+```
+is_multipart(geom_from_wkt('MULTIPOINT ((0 0),(1 1),(2 2))')) → vero
+is_multipart(geom_from_wkt('POINT (0 0)')) → falso
+```
 
 ![](../../img/geometria/is_multipart/is_multipart1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -1815,16 +1654,12 @@ Argomenti:
 
 Esempi:
 
-* `is_valid(geom_from_wkt('LINESTRING(0 0, 1 1, 2 2, 0 0)')) → vero`
-* `is_valid(geom_from_wkt('LINESTRING(0 0)')) → falso`
+```
+is_valid(geom_from_wkt('LINESTRING(0 0, 1 1, 2 2, 0 0)')) → vero
+is_valid(geom_from_wkt('LINESTRING(0 0)')) → falso
+```
 
 ![](../../img/geometria/is_valid/is_valid1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -1846,13 +1681,15 @@ Argomenti:
 
 Esempi:
 
-* `length('hello') → 5`
+```
+length('hello') → 5
+```
 
 ![](../../img/geometria/length/length1.png)
 
 ### Variabile geometria
 
-Calcola la lunghezza di un oggetto a geometria lineare. I calcoli sono sempre _planimetrici_ nel Sistema di Riferimento Spaziale (SR) di detta geometria, e l'unità di misura della lunghezza restituita è conforme all'unità di misura del SR. Ciò differisce dal calcolo eseguito dalla funzione [$length]($length.md), la quale esegue calcoli _ellissoidici_ basati sull'ellissoide del progetto e sulle impostazioni delle unità di distanza.
+Calcola la lunghezza di un oggetto a geometria lineare. I calcoli sono sempre _planimetrici_ nel Sistema di Riferimento Spaziale (SR) di detta geometria, e l'unità di misura della lunghezza restituita è conforme all'unità di misura del SR. Ciò differisce dal calcolo eseguito dalla funzione [$length](#length), la quale esegue calcoli _ellissoidici_ basati sull'ellissoide del progetto e sulle impostazioni delle unità di distanza.
 
 Sintassi:
 
@@ -1864,21 +1701,16 @@ Argomenti:
 
 Esempi:
 
+
 * `length(geom_from_wkt('LINESTRING(0 0, 4 0)')) → 4.0`
 
 ![](../../img/geometria/length/length2.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
 ## length3D
 
-Calcola la lunghezza 3D di un oggetto linea geometrica. Se la geometria non è un oggetto linea 3D, restituisce la sua lunghezza 2D. I calcoli sono sempre planimetrici nel Sistema di Riferimento Spaziale (SR) di questa geometria, e le unità della lunghezza restituita corrisponderanno alle unità per l'SR. Questo differisce dai calcoli eseguiti dalla funzione [\$length]($length.md), che eseguirà calcoli ellissoidali basati sulle impostazioni dell'ellissoide e dell'unità di distanza del progetto.
+Calcola la lunghezza 3D di un oggetto linea geometrica. Se la geometria non è un oggetto linea 3D, restituisce la sua lunghezza 2D. I calcoli sono sempre planimetrici nel Sistema di Riferimento Spaziale (SR) di questa geometria, e le unità della lunghezza restituita corrisponderanno alle unità per l'SR. Questo differisce dai calcoli eseguiti dalla funzione [$length](#length), che eseguirà calcoli ellissoidali basati sulle impostazioni dell'ellissoide e dell'unità di distanza del progetto.
 
 Sintassi:
 
@@ -1890,16 +1722,11 @@ Argomenti:
 
 Esempi:
 
-- `length3D(geom_from_wkt('LINESTRINGZ(0 0 0, 3 0 4)')) → 5.0`
+```
+length3D(geom_from_wkt('LINESTRINGZ(0 0 0, 3 0 4)')) → 5.0
+```
 
 ![](../../img/geometria/length3d/img_01.png)
-
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -1918,15 +1745,11 @@ Argomenti:
 
 Esempi:
 
-* `line_interpolate_angle(geometry:=geom_from_wkt('LineString(0 0, 10 0)'),distance:=5) → 90.0`
+```
+line_interpolate_angle(geometry:=geom_from_wkt('LineString(0 0, 10 0)'),distance:=5) → 90.0
+```
 
 ![](../../img/geometria/line_interpolate_angle/line_interpolate_angle1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -1949,15 +1772,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(line_interpolate_point(geometry:=geom_from_wkt('LineString(0 0, 10 0)'),distance:=5)) → 'Point (4 0)'`
+```
+geom_to_wkt(line_interpolate_point(geometry:=geom_from_wkt('LineString(0 0, 10 0)'),distance:=5)) → 'Point (4 0)'
+```
 
 ![](../../img/geometria/line_interpolate_point/line_interpolate_point1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -1980,17 +1799,13 @@ Argomenti:
 
 Esempi:
 
-* `line_locate_point(geometry:=geom_from_wkt('LineString(0 0, 10 0)'),point:=geom_from_wkt('Point(5 1)')) → 5.0`
+```
+line_locate_point(geometry:=geom_from_wkt('LineString(0 0, 10 0)'),point:=geom_from_wkt('Point(5 1)')) → 5.0
+```
 
 ![](../../img/geometria/line_locate_point/line_locate_point1.png)
 
-Nota bene:
-
---
-
-Osservazioni:
-
---
+---
 
 ## line_merge
 
@@ -2006,16 +1821,12 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(line_merge(geom_from_wkt('MULTILINESTRING((0 0, 1 1),(1 1, 2 2))'))) → 'LineString(0 0,1 1,2 2)'`
-* `geom_to_wkt(line_merge(geom_from_wkt('MULTILINESTRING((0 0, 1 1),(11 1, 21 2))'))) → 'MultiLineString((0 0, 1 1),(11 1, 21 2)'`
+```
+geom_to_wkt(line_merge(geom_from_wkt('MULTILINESTRING((0 0, 1 1),(1 1, 2 2))'))) → 'LineString(0 0,1 1,2 2)'
+geom_to_wkt(line_merge(geom_from_wkt('MULTILINESTRING((0 0, 1 1),(11 1, 21 2))'))) → 'MultiLineString((0 0, 1 1),(11 1, 21 2)'
+```
 
 ![](../../img/geometria/line_merge/line_merge1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -2039,16 +1850,12 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(line_substring(geometry:=geom_from_wkt('LineString(0 0, 10 0)'),start_distance:=2,end_distance:=6)) → 'LineString (2 0,6 0)'`
-* `line_substring( $geometry,  $length *.1,$length *.6) → <geometria: LineString>`
+```
+geom_to_wkt(line_substring(geometry:=geom_from_wkt('LineString(0 0, 10 0)'),start_distance:=2,end_distance:=6)) → 'LineString (2 0,6 0)'
+line_substring( $geometry,  $length *.1,$length *.6) → <geometria: LineString>
+```
 
 ![](../../img/geometria/line_substring/line_substring1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -2072,15 +1879,11 @@ Argomenti:
 
 Esempi:
 
-* `( geom_from_wkt( 'POINTM(2 5 4)' ) ) → 4`
+```
+( geom_from_wkt( 'POINTM(2 5 4)' ) ) → 4
+```
 
 ![](../../img/geometria/m/m1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -2098,18 +1901,12 @@ Argomenti:
 
 Esempi:
 
-* `m_max( make_point_m( 0,0,1 ) ) → 1`
-* `m_max(make_line( make_point_m( 0,0,1 ), make_point_m( -1,-1,2 ), make_point_m( -2,-2,0 ) ) ) → 2`
+```
+m_max( make_point_m( 0,0,1 ) ) → 1
+m_max(make_line( make_point_m( 0,0,1 ), make_point_m( -1,-1,2 ), make_point_m( -2,-2,0 ) ) ) → 2
+```
 
 ![](../../img/geometria/m_max/m_max1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
-
---
 
 ---
 
@@ -2127,16 +1924,12 @@ Argomenti:
 
 Esempi:
 
-* `m_min( make_point_m( 0,0,1 ) ) → 1`
-* `m_min(make_line( make_point_m( 0,0,1 ), make_point_m( -1,-1,2 ), make_point_m( -2,-2,0 ) ) ) → 0`
+```
+m_min( make_point_m( 0,0,1 ) ) → 1
+m_min(make_line( make_point_m( 0,0,1 ), make_point_m( -1,-1,2 ), make_point_m( -2,-2,0 ) ) ) → 0
+```
 
 ![](../../img/geometria/m_min/m_min1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -2154,13 +1947,12 @@ Argomenti:
 
 Esempi:
 
-* `main_angle(geom_from_wkt('Polygon ((321577 129614, 321581 129618, 321585 129615, 321581 129610, 321577 129614))')) → 38.66`
+```
+main_angle(geom_from_wkt('Polygon ((321577 129614, 321581 129618, 321585 129615, 321581 129610, 321577 129614))')) → 38.66
+```
 
 ![](../../img/geometria/main_angle/img_01.png)
 
-Nota bene:
-
---
 
 Osservazioni:
 
@@ -2186,19 +1978,13 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(make_circle(make_point(10,10), 5, 4)) → 'Polygon ((10 15, 15 10, 10 5, 5 10, 10 15))'`
-* `geom_to_wkt(make_circle(make_point(10,10,5), 5, 4)) → 'PolygonZ ((10 15 5, 15 10 5, 10 5 5, 5 10 5, 10 15 5))''`
-* `geom_to_wkt(make_circle(make_point(10,10,5,30), 5, 4)) → 'PolygonZM ((10 15 5 30, 15 10 5 30, 10 5 5 30, 5 10 5 30, 10 15 5 30))'`
+```
+geom_to_wkt(make_circle(make_point(10,10), 5, 4)) → 'Polygon ((10 15, 15 10, 10 5, 5 10, 10 15))'
+geom_to_wkt(make_circle(make_point(10,10,5), 5, 4)) → 'PolygonZ ((10 15 5, 15 10 5, 10 5 5, 5 10 5, 10 15 5))''
+geom_to_wkt(make_circle(make_point(10,10,5,30), 5, 4)) → 'PolygonZM ((10 15 5 30, 15 10 5 30, 10 5 5 30, 5 10 5 30, 10 15 5 30))'
+```
 
 ![](../../img/geometria/make_circle/make_circle1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
-
---
 
 ![](../../img/geometria/make_circle/make_circle2.png)
 
@@ -2222,19 +2008,13 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(make_ellipse(make_point(10,10), 5, 2, 90, 4)) → 'Polygon ((15 10, 10 8, 5 10, 10 12, 15 10))`
-* `geom_to_wkt(make_ellipse(make_point(10,10,5), 5, 2, 90, 4)) → 'PolygonZ ((15 10 5, 10 8 5, 5 10 5, 10 12 5, 15 10 5))'`
-* `geom_to_wkt(make_circle(make_point(10,10,5,30), 5, 2, 90, 4)) → 'PolygonZM ((15 10 5 30, 10 8 5 30, 5 10 5 30, 10 12 5 30, 15 10 5 30))'`
+```
+geom_to_wkt(make_ellipse(make_point(10,10), 5, 2, 90, 4)) → 'Polygon ((15 10, 10 8, 5 10, 10 12, 15 10))
+geom_to_wkt(make_ellipse(make_point(10,10,5), 5, 2, 90, 4)) → 'PolygonZ ((15 10 5, 10 8 5, 5 10 5, 10 12 5, 15 10 5))'
+geom_to_wkt(make_circle(make_point(10,10,5,30), 5, 2, 90, 4)) → 'PolygonZM ((15 10 5 30, 10 8 5 30, 5 10 5 30, 10 12 5 30, 15 10 5 30))'
+```
 
 ![](../../img/geometria/make_ellipse/make_ellipse1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
-
---
 
 ![](../../img/geometria/make_ellipse/make_ellipse2.png)
 
@@ -2254,8 +2034,10 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(make_line(make_point(2,4),make_point(3,5))) → 'LineString (2 4, 3 5)'`
-* `geom_to_wkt(make_line(make_point(2,4),make_point(3,5),make_point(9,7))) → 'LineString (2 4, 3 5, 9 7)'`
+```
+geom_to_wkt(make_line(make_point(2,4),make_point(3,5))) → 'LineString (2 4, 3 5)'
+geom_to_wkt(make_line(make_point(2,4),make_point(3,5),make_point(9,7))) → 'LineString (2 4, 3 5, 9 7)'
+```
 
 ![](../../img/geometria/make_line/make_line1.png)
 
@@ -2271,30 +2053,23 @@ Argomenti:
 
 * _<span style="color:red;">array</span>_ Matrice di punti
 
-Esempi:o
+Esempi:
 
-* `geom_to_wkt(make_line(array(make_point(2,4),make_point(3,5),make_point(9,7)))) → 'LineString (2 4, 3 5, 9 7)'`
+```
+geom_to_wkt(make_line(array(make_point(2,4),make_point(3,5),make_point(9,7)))) → 'LineString (2 4, 3 5, 9 7)'
+```
 
 ![](../../img/geometria/make_line/make_line3.png)
 
-**Espressione usata**
-
+!!! Tip "Espressione"
 ```
-make_line(
-array(geometry(
-	get_feature_by_id('fontanelle_Palermo',$id))),
-array(geometry(
-	get_feature_by_id('fontanelle_Palermo',not $id%2)))
-		) 
+	make_line(
+	array(geometry(
+		get_feature_by_id('fontanelle_Palermo',$id))),
+	array(geometry(
+		get_feature_by_id('fontanelle_Palermo',not $id%2)))
+			) 
 ```
-
-Nota bene:
-
---
-
-Osservazioni:
-
---
 
 ![](../../img/geometria/make_line/make_line2.png)
 
@@ -2317,15 +2092,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(make_point(2,4,6,8)) → 'PointZM (2 4 6 8)'`
+```
+geom_to_wkt(make_point(2,4,6,8)) → 'PointZM (2 4 6 8)'
+```
 
 ![](../../img/geometria/make_point/make_point1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -2345,15 +2116,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(make_point_m(2,4,6)) → 'PointM (2 4 6)'`
+```
+geom_to_wkt(make_point_m(2,4,6)) → 'PointM (2 4 6)'
+```
 
 ![](../../img/geometria/make_point_m/make_point_m1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -2373,16 +2140,12 @@ Argomenti:
 * _<span style="color:red;">innerRing</span>_ geometria a linea chiusa opzionale per anello interno
 
 Esempi:
-* `geom_to_wkt(make_polygon(geom_from_wkt('LINESTRING( 0 0, 0 1, 1 1, 1 0, 0 0 )'))) → 'Polygon ((0 0, 0 1, 1 1, 1 0, 0 0))'`
-* `geom_to_wkt(make_polygon(geom_from_wkt('LINESTRING( 0 0, 0 1, 1 1, 1 0, 0 0 )'),geom_from_wkt('LINESTRING( 0.1 0.1, 0.1 0.2, 0.2 0.2, 0.2 0.1, 0.1 0.1 )'),geom_from_wkt('LINESTRING( 0.8 0.8, 0.8 0.9, 0.9 0.9, 0.9 0.8, 0.8 0.8 )'))) → 'Polygon ((0 0, 0 1, 1 1, 1 0, 0 0),(0.1 0.1, 0.1 0.2, 0.2 0.2, 0.2 0.1, 0.1 0.1),(0.8 0.8, 0.8 0.9, 0.9 0.9, 0.9 0.8, 0.8 0.8))'`
 
+```
+geom_to_wkt(make_polygon(geom_from_wkt('LINESTRING( 0 0, 0 1, 1 1, 1 0, 0 0 )'))) → 'Polygon ((0 0, 0 1, 1 1, 1 0, 0 0))'
+geom_to_wkt(make_polygon(geom_from_wkt('LINESTRING( 0 0, 0 1, 1 1, 1 0, 0 0 )'),geom_from_wkt('LINESTRING( 0.1 0.1, 0.1 0.2, 0.2 0.2, 0.2 0.1, 0.1 0.1 )'),geom_from_wkt('LINESTRING( 0.8 0.8, 0.8 0.9, 0.9 0.9, 0.9 0.8, 0.8 0.8 )'))) → 'Polygon ((0 0, 0 1, 1 1, 1 0, 0 0),(0.1 0.1, 0.1 0.2, 0.2 0.2, 0.2 0.1, 0.1 0.1),(0.8 0.8, 0.8 0.9, 0.9 0.9, 0.9 0.8, 0.8 0.8))'
+```
 ![](../../img/geometria/make_polygon/make_polygon1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -2403,16 +2166,12 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(make_rectangle_3points(make_point(0, 0), make_point(0,5), make_point(5, 5), 0))) → 'Polygon ((0 0, 0 5, 5 5, 5 0, 0 0))'`
-* `geom_to_wkt(make_rectangle_3points(make_point(0, 0), make_point(0,5),make_point(5, 3), 1))) → 'Polygon ((0 0, 0 5, 5 5, 5 0, 0 0))'`
+```
+geom_to_wkt(make_rectangle_3points(make_point(0, 0), make_point(0,5), make_point(5, 5), 0))) → 'Polygon ((0 0, 0 5, 5 5, 5 0, 0 0))'
+geom_to_wkt(make_rectangle_3points(make_point(0, 0), make_point(0,5),make_point(5, 3), 1))) → 'Polygon ((0 0, 0 5, 5 5, 5 0, 0 0))'
+```
 
 ![](../../img/geometria/make_rectangle_3points/make_rectangle_3points1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -2439,18 +2198,12 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(make_regular_polygon(make_point(0,0), make_point(0,5), 5)) → 'Polygon ((0 5, 4.76 1.55, 2.94 -4.05, -2.94 -4.05, -4.76 1.55, 0 5))'`
-* `geom_to_wkt(make_regular_polygon(make_point(0,0), project(make_point(0,0), 4.0451, radians(36)), 5)) → 'Polygon ((0 5, 4.76 1.55, 2.94 -4.05, -2.94 -4.05, -4.76 1.55, 0 5))'`
+```
+geom_to_wkt(make_regular_polygon(make_point(0,0), make_point(0,5), 5)) → 'Polygon ((0 5, 4.76 1.55, 2.94 -4.05, -2.94 -4.05, -4.76 1.55, 0 5))'
+geom_to_wkt(make_regular_polygon(make_point(0,0), project(make_point(0,0), 4.0451, radians(36)), 5)) → 'Polygon ((0 5, 4.76 1.55, 2.94 -4.05, -2.94 -4.05, -4.76 1.55, 0 5))'
+```
 
 ![](../../img/geometria/make_regular_polygon/make_regular_polygon1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
-
---
 
 ![](../../img/geometria/make_regular_polygon/make_regular_polygon2.png)
 
@@ -2471,16 +2224,12 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(make_square( make_point(0,0), make_point(5,5))) → 'Polygon ((0 0, -0 5, 5 5, 5 0, 0 0))'`
-* `geom_to_wkt(make_square( make_point(5,0), make_point(5,5))) → 'Polygon ((5 0, 2.5 2.5, 5 5, 7.5 2.5, 5 0))'`
+```
+geom_to_wkt(make_square( make_point(0,0), make_point(5,5))) → 'Polygon ((0 0, -0 5, 5 5, 5 0, 0 0))'
+geom_to_wkt(make_square( make_point(5,0), make_point(5,5))) → 'Polygon ((5 0, 2.5 2.5, 5 5, 7.5 2.5, 5 0))'
+```
 
 ![](../../img/geometria/make_square/make_square1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -2500,16 +2249,12 @@ Argomenti:
 - 
 Esempi:
 
-* `geom_to_wkt(make_triangle(make_point(0,0), make_point(5,5), make_point(0,10))) → 'Triangle ((0 0, 5 5, 0 10, 0 0))'`
-* `geom_to_wkt(boundary(make_triangle(make_point(0,0), make_point(5,5), make_point(0,10)))) → 'LineString (0 0, 5 5, 0 10, 0 0)'`
+```
+geom_to_wkt(make_triangle(make_point(0,0), make_point(5,5), make_point(0,10))) → 'Triangle ((0 0, 5 5, 0 10, 0 0))'
+geom_to_wkt(boundary(make_triangle(make_point(0,0), make_point(5,5), make_point(0,10)))) → 'LineString (0 0, 5 5, 0 10, 0 0)'
+```
 
 ![](../../img/geometria/make_triangle/make_triangle1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -2530,16 +2275,12 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt( minimal_circle( geom_from_wkt( 'LINESTRING(0 5, 0 -5, 2 1)' ), 4 ) ) → Polygon ((0 5, 5 -0, -0 -5, -5 0, 0 5))`
-* `geom_to_wkt( minimal_circle( geom_from_wkt( 'MULTIPOINT(1 2, 3 4, 3 2)' ), 4 ) ) → Polygon ((3 4, 3 2, 1 2, 1 4, 3 4))`
+```
+geom_to_wkt( minimal_circle( geom_from_wkt( 'LINESTRING(0 5, 0 -5, 2 1)' ), 4 ) ) → Polygon ((0 5, 5 -0, -0 -5, -5 0, 0 5))
+geom_to_wkt( minimal_circle( geom_from_wkt( 'MULTIPOINT(1 2, 3 4, 3 2)' ), 4 ) ) → Polygon ((3 4, 3 2, 1 2, 1 4, 3 4))
+```
 
 ![](../../img/geometria/minimal_circle/minimal_circle1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -2562,16 +2303,12 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(nodes_to_points(geom_from_wkt('LINESTRING(0 0, 1 1, 2 2)'))) → 'MultiPoint ((0 0),(1 1),(2 2))'`
-* `geom_to_wkt(nodes_to_points(geom_from_wkt('POLYGON((-1 -1, 4 0, 4 2, 0 2, -1 -1))'),true)) → 'MultiPoint ((-1 -1),(4 0),(4 2),(0 2))'`
+```
+geom_to_wkt(nodes_to_points(geom_from_wkt('LINESTRING(0 0, 1 1, 2 2)'))) → 'MultiPoint ((0 0),(1 1),(2 2))'
+geom_to_wkt(nodes_to_points(geom_from_wkt('POLYGON((-1 -1, 4 0, 4 2, 0 2, -1 -1))'),true)) → 'MultiPoint ((-1 -1),(4 0),(4 2),(0 2))'
+```
 
 ![](../../img/geometria/nodes_to_points/nodes_to_points1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -2593,16 +2330,11 @@ Argomenti:
 
 Esempi:
 
-* `num_geometries(geom_from_wkt('GEOMETRYCOLLECTION(POINT(0 1), POINT(0 0), POINT(1 0), POINT(1 1))')) → 4`
-
+```
+num_geometries(geom_from_wkt('GEOMETRYCOLLECTION(POINT(0 1), POINT(0 0), POINT(1 0), POINT(1 1))')) → 4
+```
 
 ![](../../img/geometria/num_geometries/num_geometries1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -2620,17 +2352,11 @@ Argomenti:
 
 Esempi:
 
-* `num_interior_rings(geom_from_wkt('POLYGON((-1 -1, 4 0, 4 2, 0 2, -1 -1),(-0.1 -0.1, 0.4 0, 0.4 0.2, 0 0.2, -0.1 -0.1))')) → 1`
+```
+num_interior_rings(geom_from_wkt('POLYGON((-1 -1, 4 0, 4 2, 0 2, -1 -1),(-0.1 -0.1, 0.4 0, 0.4 0.2, 0 0.2, -0.1 -0.1))')) → 1
+```
 
 ![](../../img/geometria/num_interior_rings/num_interior_rings1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
-
---
 
 ![](../../img/geometria/num_interior_rings/num_interior_rings2.png)
 
@@ -2650,15 +2376,11 @@ Argomenti:
 
 Esempi:
 
-* `num_points($geometry) → numero di vertici in $geometry`
+```
+num_points($geometry) → numero di vertici in $geometry
+```
 
 ![](../../img/geometria/num_points/num_points1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -2676,15 +2398,11 @@ Argomenti:
 
 Esempi:
 
-* `num_rings(geom_from_wkt('POLYGON((-1 -1, 4 0, 4 2, 0 2, -1 -1),(-0.1 -0.1, 0.4 0, 0.4 0.2, 0 0.2, -0.1 -0.1))')) → 2`
+```
+num_rings(geom_from_wkt('POLYGON((-1 -1, 4 0, 4 2, 0 2, -1 -1),(-0.1 -0.1, 0.4 0, 0.4 0.2, 0 0.2, -0.1 -0.1))')) → 2
+```
 
 ![](../../img/geometria/num_rings/num_rings1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -2712,20 +2430,18 @@ Argomenti:
 
 Esempi:
 
-* `offset_curve($geometry, 10.5) → linea scostata a sinistra di 10.5 unità`
-* `offset_curve($geometry, -10.5) → linea scostata a destra di 10.5 unità`
-* `offset_curve($geometry, 10.5, segments=16, join=1) → linea scostata a sinistra di 10.5 unità, usando più segmenti per risultare in una curva più morbida`
-* `offset_curve($geometry, 10.5, join=3) → linea scostata a sinistra di 10.5 unità, usando un'unione smussata`
+```
+offset_curve($geometry, 10.5) → linea scostata a sinistra di 10.5 unità
+offset_curve($geometry, -10.5) → linea scostata a destra di 10.5 unità
+offset_curve($geometry, 10.5, segments=16, join=1) → linea scostata a sinistra di 10.5 unità, usando più segmenti per risultare in una curva più morbida
+offset_curve($geometry, 10.5, join=3) → linea scostata a sinistra di 10.5 unità, usando un'unione smussata
+```
 
 ![](../../img/geometria/offset_curve/offset_curve1.png)
 
-Nota bene:
-
---
-
 Osservazioni:
 
-La linea è scostata a sinistra o destra rispetto al verso della linea:
+	La linea è scostata a sinistra o destra rispetto al verso della linea:
 
 ![](../../img/geometria/offset_curve/offset_curve2.png)
 
@@ -2749,16 +2465,12 @@ Argomenti:
 
 Esempi:
 
-* `order_parts(geom_from_wkt('MultiPolygon (((1 1, 5 1, 5 5, 1 5, 1 1)),((1 1, 9 1, 9 9, 1 9, 1 1)))'), 'area($geometry)', False) → MultiPolygon (((1 1, 9 1, 9 9, 1 9, 1 1)),((1 1, 5 1, 5 5, 1 5, 1 1)))`
-* `order_parts(geom_from_wkt('LineString(1 2, 3 2, 4 3)'), '1', True) → LineString(1 2, 3 2, 4 3)`
+```
+order_parts(geom_from_wkt('MultiPolygon (((1 1, 5 1, 5 5, 1 5, 1 1)),((1 1, 9 1, 9 9, 1 9, 1 1)))'), 'area($geometry)', False) → MultiPolygon (((1 1, 9 1, 9 9, 1 9, 1 1)),((1 1, 5 1, 5 5, 1 5, 1 1)))
+order_parts(geom_from_wkt('LineString(1 2, 3 2, 4 3)'), '1', True) → LineString(1 2, 3 2, 4 3)
+```
 
 ![](../../img/geometria/order_parts/order_parts1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -2776,17 +2488,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(oriented_bbox(geom_from_wkt('MULTIPOINT(1 2, 3 4, 3 2)'))) → 'Polygon ((1 2, 2 1, 4 3, 3 4, 1 2))'`
+```
+geom_to_wkt(oriented_bbox(geom_from_wkt('MULTIPOINT(1 2, 3 4, 3 2)'))) → 'Polygon ((1 2, 2 1, 4 3, 3 4, 1 2))'
+```
 
 ![](../../img/geometria/oriented_bbox/oriented_bbox1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
-
---
 
 ![](../../img/geometria/oriented_bbox/oriented_bbox2.png)
 
@@ -2807,34 +2513,31 @@ Argomenti:
 
 Esempi:
 
-* `overlaps( geom_from_wkt( 'LINESTRING(3 5, 4 4, 5 5, 5 3)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → 1`
-* `overlaps( geom_from_wkt( 'LINESTRING(0 0, 1 1)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → 0`
+```
+overlaps( geom_from_wkt( 'LINESTRING(3 5, 4 4, 5 5, 5 3)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → 1
+overlaps( geom_from_wkt( 'LINESTRING(0 0, 1 1)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → 0
+```
 
 ![](../../img/geometria/overlaps/overlaps1.png)
 
-Nota bene:
-
---
-
 Osservazioni:
 
-Usando algoritmo `Seleziona per espressione` presente in strumenti di processing oppure ![icona](https://docs.qgis.org/2.18/en/_images/mIconExpressionSelect.png) (ctrl+F3):
+Usando algoritmo `Seleziona per espressione` presente in strumenti di processing oppure ![icona](https://docs.qgis.org/2.18/en/_images/mIconExpressionSelect.png) (Ctrl+F3):
 
-espressione usata:
-
-`overlaps(geometry(get_feature( 'cerchio','id','1')), $geometry)`
+```
+overlaps(geometry(get_feature( 'cerchio','id','1')), $geometry)
+```
 
 dove:
 
 * _geometry1_ è `geometry(get_feature('cerchio','id','1'))`
 * _geometry2_ è `$geometry`
 
-
 ![](../../img/geometria/overlaps/overlaps2.png)
 
 seleziono tutti i comuni `overlaps` (sovrapposti) al cerchio in figura.
 
-**PS:** potrei anche negare (`NOT`) l'espressione per selezionare il complementare (tutti i comuni tranne quelli sovrapposti con il cerchio).
+PS:** potrei anche negare (`NOT`) l'espressione per selezionare il complementare (tutti i comuni tranne quelli sovrapposti con il cerchio).
 
 `NOT overlaps(geometry(get_feature('cerchio','id','1')),$geometry)`
 
@@ -2842,13 +2545,11 @@ seleziono tutti i comuni `overlaps` (sovrapposti) al cerchio in figura.
 
 ## overlay_contains
 
-Restituisce se l'elemento corrente contiene spazialmente almeno un elemento da un layer target o un array di risultati basati su espressioni per gli elementi nel layer target contenuti nell'elemento corrente.
-
-Ulteriori informazioni sul predicato GEOS "Contains" sottostante, come descritto nella funzione PostGIS [ST_CONTAINS](https://postgis.net/docs/ST_Contains.html).
+Restituisce se l'elemento corrente contiene spazialmente almeno un elemento da un layer target o un array di risultati basati su espressioni per gli elementi nel layer target contenuti nell'elemento corrente. Ulteriori informazioni sul predicato GEOS "Contains" sottostante, come descritto nella funzione PostGIS [ST_CONTAINS](https://postgis.net/docs/ST_Contains.html).
 
 Sintassi:
 
-- overlay_contains(_<span style="color:red;">layer</span>_[,_<span style="color:red;">expression</span>_][,_<span style="color:red;">filter</span>_][,_<span style="color:red;">limit</span>_][,_<span style="color:red;">cache=false</span>_]_)
+- overlay_contains(_<span style="color:red;">layer</span>_[,_<span style="color:red;">expression</span>_][,_<span style="color:red;">filter</span>_][,_<span style="color:red;">limit</span>_][,_<span style="color:red;">cache=false</span>_])
 
 [ ] indica componenti opzionali
 
@@ -2865,34 +2566,26 @@ Argomenti:
 Esempi:
 
 ```
-* overlay_contains('regions') → true se l'elemento corrente contiene spazialmente una regione
-* overlay_contains('regions', filter:= population > 10000) → vero se l'elemento corrente contiene spazialmente una regione con una popolazione maggiore di 10000
-* overlay_contains('regions', name) → un array di nomi, per le regioni contenute nell'elemento corrente
-* array_to_string(overlay_contains('regions', name)) → una stringa come una lista di nomi separata da virgola, per le regioni contenute nell'elemento corrente
-* overlay_contains('regions', name)[0] → una stringa con il nome della regione contenuta nell'elemento corrente
-* array_sort(overlay_contains(layer:='regions', expression:="name", filter:= population > 10000)) → un array ordinato di nomi, per le regioni contenute nell'elemento corrente e con una popolazione superiore a 10000
-* overlay_contains(layer:='regions', expression:= geom_to_wkt($geometry), limit:=2) → un array di geometrie (in WKT), per un massimo di due regioni contenute nell'elemento corrente
+overlay_contains('regions') → true se l'elemento corrente contiene spazialmente una regione
+overlay_contains('regions', filter:= population > 10000) → vero se l'elemento corrente contiene spazialmente una regione con una popolazione maggiore di 10000
+overlay_contains('regions', name) → un array di nomi, per le regioni contenute nell'elemento corrente
+array_to_string(overlay_contains('regions', name)) → una stringa come una lista di nomi separata da virgola, per le regioni contenute nell'elemento corrente
+overlay_contains('regions', name)[0] → una stringa con il nome della regione contenuta nell'elemento corrente
+array_sort(overlay_contains(layer:='regions', expression:="name", filter:= population > 10000)) → un array ordinato di nomi, per le regioni contenute nell'elemento corrente e con una popolazione superiore a 10000
+overlay_contains(layer:='regions', expression:= geom_to_wkt($geometry), limit:=2) → un array di geometrie (in WKT), per un massimo di due regioni contenute nell'elemento corrente
 ```
 
 ![](../../img/geometria/refFunction/overlay_contains.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
 ## overlay_crosses
 
-Restituisce se l'elemento corrente attraversa spazialmente almeno un elemento di un layer target o un array di risultati basati su espressioni per gli elementi nel layer target attraversati dall'elemento corrente.
-
-Ulteriori informazioni sul predicato GEOS "Crosses" sottostante, come descritto nella funzione PostGIS [ST_Crosses](https://postgis.net/docs/ST_Crosses.html).
+Restituisce se l'elemento corrente attraversa spazialmente almeno un elemento di un layer target o un array di risultati basati su espressioni per gli elementi nel layer target attraversati dall'elemento corrente. Ulteriori informazioni sul predicato GEOS "Crosses" sottostante, come descritto nella funzione PostGIS [ST_Crosses](https://postgis.net/docs/ST_Crosses.html).
 
 Sintassi:
 
-- overlay_crosses(_<span style="color:red;">layer</span>_[,_<span style="color:red;">expression</span>_][,_<span style="color:red;">filter</span>_][,_<span style="color:red;">limit</span>_][,_<span style="color:red;">cache=false</span>_]_)
+- overlay_crosses(_<span style="color:red;">layer</span>_[,_<span style="color:red;">expression</span>_][,_<span style="color:red;">filter</span>_][,_<span style="color:red;">limit</span>_][,_<span style="color:red;">cache=false</span>_])
 
 [ ] indica componenti opzionali
 
@@ -2909,34 +2602,26 @@ Argomenti:
 Esempi:
 
 ```
-* overlay_crosses('regions') → true se l'elemento corrente attraversa spazialmente una regione
-* overlay_crosses('regions', filter:= population > 10000) → vero se l'elemento corrente attraversa spazialmente una regione con una popolazione maggiore di 10000
-* overlay_crosses('regions', name) → un array di nomi, per le regioni attraversate dall'elemento corrente
-* array_to_string(overlay_crosses('regions', name)) → una stringa come una lista di nomi separata da virgola, per le regioni attraversate dall'elemento corrente
-* overlay_crosses('regions', name)[0] → una stringa con il nome della prima regioni attraversata dall'elemento corrente
-* array_sort(overlay_crosses(layer:='regions', expression:="name", filter:= population > 10000)) → un array ordinato di nomi, per le regioni attraversate dall'elemento corrente e con una popolazione superiore a 10000
-* overlay_crosses(layer:='regions', expression:= geom_to_wkt($geometry), limit:=2) → un array di geometrie (in WKT), per un massimo di due regioni attraversate dall'elemento corrente
+overlay_crosses('regions') → true se l'elemento corrente attraversa spazialmente una regione
+overlay_crosses('regions', filter:= population > 10000) → vero se l'elemento corrente attraversa spazialmente una regione con una popolazione maggiore di 10000
+overlay_crosses('regions', name) → un array di nomi, per le regioni attraversate dall'elemento corrente
+array_to_string(overlay_crosses('regions', name)) → una stringa come una lista di nomi separata da virgola, per le regioni attraversate dall'elemento corrente
+overlay_crosses('regions', name)[0] → una stringa con il nome della prima regioni attraversata dall'elemento corrente
+array_sort(overlay_crosses(layer:='regions', expression:="name", filter:= population > 10000)) → un array ordinato di nomi, per le regioni attraversate dall'elemento corrente e con una popolazione superiore a 10000
+overlay_crosses(layer:='regions', expression:= geom_to_wkt($geometry), limit:=2) → un array di geometrie (in WKT), per un massimo di due regioni attraversate dall'elemento corrente
 ```
 
 ![](../../img/geometria/refFunction/overlay_crosses.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
 ## overlay_disjoint
 
-Restituisce se l'elemento corrente è spazialmente disgiunto da tutti gli elementi di un layer target, o un array di risultati basati su espressione per gli elementi nel layer target che sono disgiunti dall'elemento corrente. 
-
-Ulteriori informazioni sul sottostante predicato GEOS "Disjoint", come descritto nella funzione PostGIS [ST_Disjoint](https://postgis.net/docs/ST_Disjoint.html).
+Restituisce se l'elemento corrente è spazialmente disgiunto da tutti gli elementi di un layer target, o un array di risultati basati su espressione per gli elementi nel layer target che sono disgiunti dall'elemento corrente. Ulteriori informazioni sul sottostante predicato GEOS "Disjoint", come descritto nella funzione PostGIS [ST_Disjoint](https://postgis.net/docs/ST_Disjoint.html).
 
 Sintassi:
 
-- overlay_disjoint(_<span style="color:red;">layer</span>_[,_<span style="color:red;">expression</span>_][,_<span style="color:red;">filter</span>_][,_<span style="color:red;">limit</span>_][,_<span style="color:red;">cache=false</span>_]_)
+- overlay_disjoint(_<span style="color:red;">layer</span>_[,_<span style="color:red;">expression</span>_][,_<span style="color:red;">filter</span>_][,_<span style="color:red;">limit</span>_][,_<span style="color:red;">cache=false</span>_])
 
 [ ] indica componenti opzionali
 
@@ -2953,34 +2638,26 @@ Argomenti:
 Esempi:
 
 ```
-* overlay_disjoint('regions') → true se l'elemento corrente è spazialmente disgiunto da tutte le regioni
-* overlay_disjoint('regions', filter:= population > 10000) → vero se l'elemento corrente è spazialmente disgiunto da tutte le regioni con una popolazione maggiore di 10000
-* overlay_disjoint('regions', name) → un array di nomi, per le regioni spazialmente disgiunte dall'elemento corrente
-* array_to_string(overlay_disjoint('regions', name)) → una stringa come una lista di nomi separata da virgola, per le regioni spazialmente disgiunte dall'elemento corrente
-* overlay_disjoint('regions', name)[0] → una stringa con il nome della regione spazialmente disgiunte dall'elemento corrente
-* array_sort(overlay_disjoint(layer:='regions', expression:="name", filter:= population > 10000)) → un array ordinato di nomi, per le regioni spazialmente disgiunte dall'elemento corrente e con una popolazione superiore a 10000
-* overlay_disjoint(layer:='regions', expression:= geom_to_wkt($geometry), limit:=2) → un array di geometrie (in WKT), per un massimo di due regioni spazialmente disgiunte dall'elemento corrente
+overlay_disjoint('regions') → true se l'elemento corrente è spazialmente disgiunto da tutte le regioni
+overlay_disjoint('regions', filter:= population > 10000) → vero se l'elemento corrente è spazialmente disgiunto da tutte le regioni con una popolazione maggiore di 10000
+overlay_disjoint('regions', name) → un array di nomi, per le regioni spazialmente disgiunte dall'elemento corrente
+array_to_string(overlay_disjoint('regions', name)) → una stringa come una lista di nomi separata da virgola, per le regioni spazialmente disgiunte dall'elemento corrente
+overlay_disjoint('regions', name)[0] → una stringa con il nome della regione spazialmente disgiunte dall'elemento corrente
+array_sort(overlay_disjoint(layer:='regions', expression:="name", filter:= population > 10000)) → un array ordinato di nomi, per le regioni spazialmente disgiunte dall'elemento corrente e con una popolazione superiore a 10000
+overlay_disjoint(layer:='regions', expression:= geom_to_wkt($geometry), limit:=2) → un array di geometrie (in WKT), per un massimo di due regioni spazialmente disgiunte dall'elemento corrente
 ```
 
 ![](../../img/geometria/refFunction/overlay_disjoint.png)
-
-Nota bene:
-
---
-
-Osservazioni:overlay_disjoint
 
 ---
 
 ## overlay_equals
 
-Restituisce se l'elemento corrente è spazialmente uguale ad almeno un elemento da un layer target o un array di risultati basati su espressioni per gli elementi nel layer target che sono spazialmente uguali all'elemento corrente.
-
-Ulteriori informazioni sul predicato GEOS "Equals" sottostante, come descritto nella funzione PostGIS [ST_Equals](https://postgis.net/docs/ST_Equals.html).
+Restituisce se l'elemento corrente è spazialmente uguale ad almeno un elemento da un layer target o un array di risultati basati su espressioni per gli elementi nel layer target che sono spazialmente uguali all'elemento corrente. Ulteriori informazioni sul predicato GEOS "Equals" sottostante, come descritto nella funzione PostGIS [ST_Equals](https://postgis.net/docs/ST_Equals.html).
 
 Sintassi:
 
-- overlay_equals(_<span style="color:red;">layer</span>_[,_<span style="color:red;">expression</span>_][,_<span style="color:red;">filter</span>_][,_<span style="color:red;">limit</span>_][,_<span style="color:red;">cache=false</span>_]_)
+- overlay_equals(_<span style="color:red;">layer</span>_[,_<span style="color:red;">expression</span>_][,_<span style="color:red;">filter</span>_][,_<span style="color:red;">limit</span>_][,_<span style="color:red;">cache=false</span>_])
 
 [ ] indica componenti opzionali
 
@@ -2997,34 +2674,26 @@ Argomenti:
 Esempi:
 
 ```
-* overlay_equals('regions') → true se l'elemento corrente è spazialmente uguale ad una regione
-* overlay_equals('regions', filter:= population > 10000) → vero se l'elemento corrente è spazialmente uguale ad una regione con una popolazione maggiore di 10000
-* overlay_equals('regions', name) → un array di nomi, per le regioni spazialmente uguali all'elemento corrente
-* array_to_string(overlay_equals('regions', name)) → una stringa come lista di nomi separati da virgole, per le regioni spazialmente uguali all'elemento corrente
-* overlay_equals('regions', name)[0] → una stringa con il nome della regione spazialmente uguale all'elemento corrente
-* array_sort(overlay_equals(layer:='regions', expression:="name", filter:= population > 10000)) → un array ordinato di nomi, per le regioni spazialmente uguali all'elemento corrente e con una popolazione superiore a 10000
-* overlay_equals(layer:='regions', expression:= geom_to_wkt($geometry), limit:=2) → un array di geometrie (in WKT), per un massimo di due regioni spazialmente uguali all'elemento corrente
+overlay_equals('regions') → true se l'elemento corrente è spazialmente uguale ad una regione
+overlay_equals('regions', filter:= population > 10000) → vero se l'elemento corrente è spazialmente uguale ad una regione con una popolazione maggiore di 10000
+overlay_equals('regions', name) → un array di nomi, per le regioni spazialmente uguali all'elemento corrente
+array_to_string(overlay_equals('regions', name)) → una stringa come lista di nomi separati da virgole, per le regioni spazialmente uguali all'elemento corrente
+overlay_equals('regions', name)[0] → una stringa con il nome della regione spazialmente uguale all'elemento corrente
+array_sort(overlay_equals(layer:='regions', expression:="name", filter:= population > 10000)) → un array ordinato di nomi, per le regioni spazialmente uguali all'elemento corrente e con una popolazione superiore a 10000
+overlay_equals(layer:='regions', expression:= geom_to_wkt($geometry), limit:=2) → un array di geometrie (in WKT), per un massimo di due regioni spazialmente uguali all'elemento corrente
 ```
 
 ![](../../img/geometria/refFunction/overlay_equals.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
 ## overlay_intersects
 
-Restituisce se l'elemento corrente interseca spazialmente almeno un elemento da un layer target o un array di risultati basati su espressioni per gli elementi nel layer target intersecati dall'elemento corrente.
-
-Ulteriori informazioni sul predicato GEOS "Intersects" sottostante, come descritto nella funzione PostGIS [ST_INTERSECTS](https://postgis.net/docs/ST_Intersects.html).
+Restituisce se l'elemento corrente interseca spazialmente almeno un elemento da un layer target o un array di risultati basati su espressioni per gli elementi nel layer target intersecati dall'elemento corrente. Ulteriori informazioni sul predicato GEOS "Intersects" sottostante, come descritto nella funzione PostGIS [ST_INTERSECTS](https://postgis.net/docs/ST_Intersects.html).
 
 Sintassi:
 
-- overlay_intersects(_<span style="color:red;">layer</span>_[,_<span style="color:red;">expression</span>_][,_<span style="color:red;">filter</span>_][,_<span style="color:red;">limit</span>_][,_<span style="color:red;">cache=false</span>_]_)
+- overlay_intersects(_<span style="color:red;">layer</span>_[,_<span style="color:red;">expression</span>_][,_<span style="color:red;">filter</span>_][,_<span style="color:red;">limit</span>_][,_<span style="color:red;">cache=false</span>_])
 
 [ ] indica componenti opzionali
 
@@ -3041,34 +2710,26 @@ Argomenti:
 Esempi:
 
 ```
-* overlay_intersects('regions') → true se l'elemento corrente interseca spazialmente una regione
-* overlay_intersects('regions', filter:= population > 10000) → vero se l'elemento corrente interseca spazialmente una regione con una popolazione maggiore di 10000
-* overlay_intersects('regions', name) → un array di nomi, per le regioni intersecate dall'elemento corrente
-* array_to_string(overlay_intersects('regions', name)) → una stringa come una lista di nomi separata da virgola, per le regioni intersecate dall'elemento corrente
-* overlay_intersects('regions', name)[0] → una stringa con il nome della regione intersecata dall'elemento corrente
-* array_sort(overlay_intersects(layer:='regions', expression:="name", filter:= population > 10000)) → un array ordinato di nomi, per le regioni intersecate dall'elemento corrente e con una popolazione maggiore di 10000
-* overlay_intersects(layer:='regions', expression:= geom_to_wkt($geometry), limit:=2) → un array di geometrie (in WKT), per un massimo di due regioni intersecate dall'elemento corrente
+overlay_intersects('regions') → true se l'elemento corrente interseca spazialmente una regione
+overlay_intersects('regions', filter:= population > 10000) → vero se l'elemento corrente interseca spazialmente una regione con una popolazione maggiore di 10000
+overlay_intersects('regions', name) → un array di nomi, per le regioni intersecate dall'elemento corrente
+array_to_string(overlay_intersects('regions', name)) → una stringa come una lista di nomi separata da virgola, per le regioni intersecate dall'elemento corrente
+overlay_intersects('regions', name)[0] → una stringa con il nome della regione intersecata dall'elemento corrente
+array_sort(overlay_intersects(layer:='regions', expression:="name", filter:= population > 10000)) → un array ordinato di nomi, per le regioni intersecate dall'elemento corrente e con una popolazione maggiore di 10000
+overlay_intersects(layer:='regions', expression:= geom_to_wkt($geometry), limit:=2) → un array di geometrie (in WKT), per un massimo di due regioni intersecate dall'elemento corrente
 ```
 
 ![](../../img/geometria/refFunction/overlay_intersects.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
 ## overlay_nearest
 
-Restituisce se l'elemento corrente ha elementi da un layer target entro una data distanza o un array di risultati basati su espressioni per gli elementi nel layer di target entro una distanza dall'elemento corrente.
-
-Nota: questa funzione può essere lenta e consuma molta memoria per layer con molte feature.
+Restituisce se l'elemento corrente ha elementi da un layer target entro una data distanza o un array di risultati basati su espressioni per gli elementi nel layer di target entro una distanza dall'elemento corrente. Nota: questa funzione può essere lenta e consuma molta memoria per layer con molte feature.
 
 Sintassi:
 
-- overlay_contains(_<span style="color:red;">layer</span>_[,_<span style="color:red;">expression</span>_][,_<span style="color:red;">filter</span>_][,_<span style="color:red;">limit=1</span>_][,_<span style="color:red;">max_distance</span>_][,_<span style="color:red;">cache</span>_]_)
+- overlay_contains(_<span style="color:red;">layer</span>_[,_<span style="color:red;">expression</span>_][,_<span style="color:red;">filter</span>_][,_<span style="color:red;">limit=1</span>_][,_<span style="color:red;">max_distance</span>_][,_<span style="color:red;">cache</span>_])
 
 [ ] indica componenti opzionali
 
@@ -3086,22 +2747,16 @@ Argomenti:
 Esempi:
 
 ```
-* overlay_nearest('airports') → true se il layer "airports" ha almeno un elemento
-* overlay_nearest('airports', max_distance:= 5000) → vero se è presente un aeroporto entro una distanza di 5000 unità di mappa dall'elemento corrente
-* overlay_nearest('airports', name) → il nome dell'aereoporto più vicino all'elemento corrente, come array
-* array_to_string(overlay_nearest('airports', name)) → il nome dell'aereoporto più vicino all'elemento corrente, come stringa
-* overlay_nearest(layer:='airports', expression:= name, max_distance:= 5000) → il nome dell'aereoporto più vicino entro una distanza di 5000 unità di mappa dall'elemento corrente, come array
-* overlay_nearest(layer:='airports', expression:="name", filter:= "Use"='Civilian', limit:=3) → un array di nomi, per un massimo di tre aeroeporti civili più vicini ordinati per distanza
-* overlay_nearest(layer:='airports', expression:="name", limit:= -1, max_distance:= 5000) → un array di nomi, per tutti gli aeroporti entro una distanza di 5000 unità di mappa dall'elemento corrente, ordinato per distanza.
+overlay_nearest('airports') → true se il layer "airports" ha almeno un elemento
+overlay_nearest('airports', max_distance:= 5000) → vero se è presente un aeroporto entro una distanza di 5000 unità di mappa dall'elemento corrente
+overlay_nearest('airports', name) → il nome dell'aereoporto più vicino all'elemento corrente, come array
+array_to_string(overlay_nearest('airports', name)) → il nome dell'aereoporto più vicino all'elemento corrente, come stringa
+overlay_nearest(layer:='airports', expression:= name, max_distance:= 5000) → il nome dell'aereoporto più vicino entro una distanza di 5000 unità di mappa dall'elemento corrente, come array
+overlay_nearest(layer:='airports', expression:="name", filter:= "Use"='Civilian', limit:=3) → un array di nomi, per un massimo di tre aeroeporti civili più vicini ordinati per distanza
+overlay_nearest(layer:='airports', expression:="name", limit:= -1, max_distance:= 5000) → un array di nomi, per tutti gli aeroporti entro una distanza di 5000 unità di mappa dall'elemento corrente, ordinato per distanza.
 ```
 
 ![](../../img/geometria/refFunction/overlay_nearest.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 Esempio 45: <http://hfcqgis.opendatasicilia.it/it/latest/esempi/linea_min_distanza2.html>
 
@@ -3109,13 +2764,11 @@ Esempio 45: <http://hfcqgis.opendatasicilia.it/it/latest/esempi/linea_min_distan
 
 ## overlay_touches
 
-Restituisce se l'elemento corrente tocca spazialmente almeno un elemento da un layer target o un array di risultati basati su espressioni per gli elementi nel layer target toccati dall'elemento corrente.
-
-Leggi ulteriori informazioni sul predicato GEOS "Touches", come descritto nella funzione PostGIS [ST_TOUCHES](https://postgis.net/docs/ST_Touches.html).
+Restituisce se l'elemento corrente tocca spazialmente almeno un elemento da un layer target o un array di risultati basati su espressioni per gli elementi nel layer target toccati dall'elemento corrente. Leggi ulteriori informazioni sul predicato GEOS "Touches", come descritto nella funzione PostGIS [ST_TOUCHES](https://postgis.net/docs/ST_Touches.html).
 
 Sintassi:
 
-- overlay_touches(_<span style="color:red;">layer</span>_[,_<span style="color:red;">expression</span>_][,_<span style="color:red;">filter</span>_][,_<span style="color:red;">limit</span>_][,_<span style="color:red;">cache=false</span>_]_)
+- overlay_touches(_<span style="color:red;">layer</span>_[,_<span style="color:red;">expression</span>_][,_<span style="color:red;">filter</span>_][,_<span style="color:red;">limit</span>_][,_<span style="color:red;">cache=false</span>_])
 
 [ ] indica componenti opzionali
 
@@ -3132,35 +2785,26 @@ Argomenti:
 Esempi:
 
 ```
-* overlay_touches('regions') → true se l'elemento corrente tocca spazialmente una regione
-* overlay_touches('regions', filter:= population > 10000) → vero se l'elemento corrente tocca spazialmente una regione con una popolazione maggiore di 10000
-* overlay_touches('regions', name) → un array di nomi, per le regioni tocacte dall'elemento corrente
-* string_to_array(overlay_touches('regions', name)) → una stringa come lista di nomi separati da virgole, per le regioni toccate dall'elemento corrente
-* overlay_touches('regions', name)[0] → una stringa con il nome della regione toccata dall'elemento corrente
-* array_sort(overlay_touches(layer:='regions', expression:="name", filter:= population > 10000)) → un array ordinato di nomi, per le regioni toccate dall'elemento attuale e con una popolazione superiore a 10000
-* overlay_touches(layer:='regions', expression:= geom_to_wkt($geometry), limit:=2) → un array di geometrie (in WKT), per un massimo di due regioni toccate dall'elemento corrente
+overlay_touches('regions') → true se l'elemento corrente tocca spazialmente una regione
+overlay_touches('regions', filter:= population > 10000) → vero se l'elemento corrente tocca spazialmente una regione con una popolazione maggiore di 10000
+overlay_touches('regions', name) → un array di nomi, per le regioni tocacte dall'elemento corrente
+string_to_array(overlay_touches('regions', name)) → una stringa come lista di nomi separati da virgole, per le regioni toccate dall'elemento corrente
+overlay_touches('regions', name)[0] → una stringa con il nome della regione toccata dall'elemento corrente
+array_sort(overlay_touches(layer:='regions', expression:="name", filter:= population > 10000)) → un array ordinato di nomi, per le regioni toccate dall'elemento attuale e con una popolazione superiore a 10000
+overlay_touches(layer:='regions', expression:= geom_to_wkt($geometry), limit:=2) → un array di geometrie (in WKT), per un massimo di due regioni toccate dall'elemento corrente
 ```
 
-
 ![](../../img/geometria/refFunction/overlay_touches.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
 ## overlay_within
 
-Restituisce se l'elemento corrente è spazialmente all'interno di almeno un elemento da layer destinazione, o un array di risultati basati su espressione per gli elementi nel layer destinazione che contengono l'elemento corrente. 
-
-Ulteriori informazioni sul sottostante predicato GEOS "Within", come descritto nella funzione PostGIS [ST_WITHIN](https://postgis.net/docs/ST_Within.html).
+Restituisce se l'elemento corrente è spazialmente all'interno di almeno un elemento da layer destinazione, o un array di risultati basati su espressione per gli elementi nel layer destinazione che contengono l'elemento corrente. Ulteriori informazioni sul sottostante predicato GEOS "Within", come descritto nella funzione PostGIS [ST_WITHIN](https://postgis.net/docs/ST_Within.html).
 
 Sintassi:
 
-- overlay_within(_<span style="color:red;">layer</span>_[,_<span style="color:red;">expression</span>_][,_<span style="color:red;">filter</span>_][,_<span style="color:red;">limit</span>_][,_<span style="color:red;">cache=false</span>_]_)
+- overlay_within(_<span style="color:red;">layer</span>_[,_<span style="color:red;">expression</span>_][,_<span style="color:red;">filter</span>_][,_<span style="color:red;">limit</span>_][,_<span style="color:red;">cache=false</span>_])
 
 [ ] indica componenti opzionali
 
@@ -3177,22 +2821,16 @@ Argomenti:
 Esempi:
 
 ```
-* overlay_within('regions') → true se l'elemento corrente è spazialmente all'interno di una regione
-* overlay_within('regions', filter:= population > 10000) → vero se l'elemento corrente è spazialmente all'interno di una regione con una popolazione maggiore di 10000
-* overlay_within('regions', name) → un array di nomi, per le regioni contenenti l'elemento corrente
-* array_to_string(overlay_within('regions', name)) → una stringa come lista di nomi separati da virgole, per le regioni che contengono l'elemento corrente
-* overlay_within('regions', name)[0] → una stringa con il nome della regione che contengono l'elemento corrente
-* array_sort(overlay_within(layer:='regions', expression:="name", filter:= population > 10000)) → un array ordinato di nomi, per le regioni contenenti l'elemento corrente e con una popolazione superiore a 10000
-* overlay_within(layer:='regions', expression:= geom_to_wkt($geometry), limit:=2) → un array di geometrie (in WKT), per un massimo di due regioni contenenti l'elemento corrente
+overlay_within('regions') → true se l'elemento corrente è spazialmente all'interno di una regione
+overlay_within('regions', filter:= population > 10000) → vero se l'elemento corrente è spazialmente all'interno di una regione con una popolazione maggiore di 10000
+overlay_within('regions', name) → un array di nomi, per le regioni contenenti l'elemento corrente
+array_to_string(overlay_within('regions', name)) → una stringa come lista di nomi separati da virgole, per le regioni che contengono l'elemento corrente
+overlay_within('regions', name)[0] → una stringa con il nome della regione che contengono l'elemento corrente
+array_sort(overlay_within(layer:='regions', expression:="name", filter:= population > 10000)) → un array ordinato di nomi, per le regioni contenenti l'elemento corrente e con una popolazione superiore a 10000
+overlay_within(layer:='regions', expression:= geom_to_wkt($geometry), limit:=2) → un array di geometrie (in WKT), per un massimo di due regioni contenenti l'elemento corrente
 ```
 
 ![](../../img/geometria/refFunction/overlay_within.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -3210,15 +2848,11 @@ Argomenti:
 
 Esempi:
 
-* `perimeter(geom_from_wkt('POLYGON((0 0, 4 0, 4 2, 0 2, 0 0))')) → 12.0`
+```
+perimeter(geom_from_wkt('POLYGON((0 0, 4 0, 4 2, 0 2, 0 0))')) → 12.0
+```
 
 ![](../../img/geometria/perimeter/perimeter1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -3237,16 +2871,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(point_n(geom_from_wkt('POLYGON((0 0, 4 0, 4 2, 0 2, 0 0))'),2)) → 'Point (4 0)'`
-
+```
+geom_to_wkt(point_n(geom_from_wkt('POLYGON((0 0, 4 0, 4 2, 0 2, 0 0))'),2)) → 'Point (4 0)'
+```
 
 ![](../../img/geometria/point_n/point_n1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -3254,7 +2883,7 @@ Osservazioni:
 
 ---
 
-Esempi: correlati
+Esempi correlati:
 
 [esempio nro 4](/esempi/add_col_z.md) - Come aggiungere la quota Z alla tabella attributi
 
@@ -3274,15 +2903,11 @@ Argomenti:
 
 Esempi:
 
-* `point_on_surface($geometry) → una geometria punto`
+```
+point_on_surface($geometry) → una geometria punto
+```
 
 ![](../../img/geometria/point_on_surface/point_on_surface1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -3305,15 +2930,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(pole_of_inaccessibility( geom_from_wkt('POLYGON((0 1,0 9,3 10,3 3, 10 3, 10 1, 0 1))'), 0.1)) → 'Point(1.55, 1.55)'`
+```
+geom_to_wkt(pole_of_inaccessibility( geom_from_wkt('POLYGON((0 1,0 9,3 10,3 3, 10 3, 10 1, 0 1))'), 0.1)) → 'Point(1.55, 1.55)'
+```
 
 ![](../../img/geometria/pole_of_inaccessibility/pole_of_inaccessibility1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -3340,15 +2961,11 @@ Argomenti:
 
 Esempi:
 
-* `project(make_point(1, 2), 3, radians(270)) → Point(-2, 2)`
+```
+project(make_point(1, 2), 3, radians(270)) → Point(-2, 2)
+```
 
 ![](../../img/geometria/project/project1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -3366,7 +2983,7 @@ Restituisce la rappresentazione Dimensional Extended 9 Intersection Model (DE-9I
 
 Sintassi:
 
-* relate(_<span style="color:red;">geometry</span>_, _<span style="color:red;">geometry</span>_, geometry_)
+* relate(_<span style="color:red;">geometry</span>_, _<span style="color:red;">geometry</span>_)
 )
 
 Argomenti:
@@ -3376,7 +2993,9 @@ Argomenti:
 
 Esempi:
 
-* `relate( geom_from_wkt( 'LINESTRING(40 40,120 120)' ), geom_from_wkt( 'LINESTRING(40 40,60 120)' ) ) → 'FF1F00102'`
+```
+relate( geom_from_wkt( 'LINESTRING(40 40,120 120)' ), geom_from_wkt( 'LINESTRING(40 40,60 120)' ) ) → 'FF1F00102'
+```
 
 ![](../../img/geometria/relate/relate1.png)
 
@@ -3390,21 +3009,15 @@ Sintassi:
 
 Argomenti:
 
-*  _<span style="color:red;">geometry</span>_ una geometria
-*  _<span style="color:red;">geometry</span>_ una geometria
-*  _<span style="color:red;">pattern</span>_ Tratteggio DE-9IM da far corrispondere
+* _<span style="color:red;">geometry</span>_ una geometria
+* _<span style="color:red;">geometry</span>_ una geometria
+* _<span style="color:red;">pattern</span>_ Tratteggio DE-9IM da far corrispondere
 
-Esempi:o
+Esempi:
 
-* `relate( geom_from_wkt( 'LINESTRING(40 40,120 120)' ), geom_from_wkt( 'LINESTRING(40 40,60 120)' ), '**1F001**' ) → Vero`
-
-Nota bene:
-
---
-
-Osservazioni:
-
---
+```
+relate( geom_from_wkt( 'LINESTRING(40 40,120 120)' ), geom_from_wkt( 'LINESTRING(40 40,60 120)' ), '**1F001**' ) → Vero
+```
 
 ![](../../img/geometria/relate/relate1.png)
 
@@ -3417,7 +3030,7 @@ Link utili:
 
 ## reverse
 
-Inverte il verso di una linestring invertendo l'ordine dei sui vertici
+Inverte il verso di una linestring invertendo l'ordine dei sui vertici.
 
 Sintassi:
 
@@ -3429,15 +3042,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(reverse(geom_from_wkt('LINESTRING(0 0, 1 1, 2 2)'))) → 'LINESTRING(2 2, 1 1, 0 0)'`
+```
+geom_to_wkt(reverse(geom_from_wkt('LINESTRING(0 0, 1 1, 2 2)'))) → 'LINESTRING(2 2, 1 1, 0 0)'
+```
 
 ![](../../img/geometria/reverse/reverse1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -3463,16 +3072,12 @@ Argomenti:
 
 Esempi:
 
-* `rotate($geometry, 45, make_point(4, 5)) → la geometria ruotava di 45 gradi in senso orario attorno al punto (4, 5)`
-* `rotate($geometry, 45) → la geometria ruotava di 45 gradi in senso orario attorno al centro del riquadro di delimitazione`
+```
+rotate($geometry, 45, make_point(4, 5)) → la geometria ruotava di 45 gradi in senso orario attorno al punto (4, 5)
+rotate($geometry, 45) → la geometria ruotava di 45 gradi in senso orario attorno al centro del riquadro di delimitazione
+```
 
 ![](../../img/geometria/rotate/rotate1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ![screen](../../img/novita_312/Image03.png)
 
@@ -3492,15 +3097,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(segments_to_lines(geom_from_wkt('LINESTRING(0 0, 1 1, 2 2)'))) → 'MultiLineString ((0 0, 1 1),(1 1, 2 2))'`
+```
+geom_to_wkt(segments_to_lines(geom_from_wkt('LINESTRING(0 0, 1 1, 2 2)'))) → 'MultiLineString ((0 0, 1 1),(1 1, 2 2))'
+```
 
 ![](../../img/geometria/segments_to_lines/segments_to_lines1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -3519,15 +3120,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(shortest_line(geom_from_wkt('LINESTRING (20 80, 98 190, 110 180, 50 75 )'),geom_from_wkt('POINT(100 100)'))) → LineString(73.0769 115.384, 100 100)`
+```
+geom_to_wkt(shortest_line(geom_from_wkt('LINESTRING (20 80, 98 190, 110 180, 50 75 )'),geom_from_wkt('POINT(100 100)'))) → LineString(73.0769 115.384, 100 100)
+```
 
 ![](../../img/geometria/shortest_line/shortest_line1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -3547,20 +3144,16 @@ Sintassi:
 
 Argomenti:
 
-* _<span style="color:red;">geometry</span> una geometria
-* _<span style="color:red;">tolerance</span> deviazione massima dai segmenti rettilinei per i punti da rimuovere
+* _<span style="color:red;">geometry</span>_ una geometria
+* _<span style="color:red;">tolerance</span>_ deviazione massima dai segmenti rettilinei per i punti da rimuovere
 
 Esempi:
 
-* `geom_to_wkt(simplify(geometry:=geom_from_wkt('LineString(0 0, 5 0.1, 10 0)'),tolerance:=5)) → 'LineString(0 0, 10 0)'`
+```
+geom_to_wkt(simplify(geometry:=geom_from_wkt('LineString(0 0, 5 0.1, 10 0)'),tolerance:=5)) → 'LineString(0 0, 10 0)'
+```
 
 ![](../../img/geometria/simplify/simplify1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -3579,15 +3172,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_from_wkt('LineString(0 0, 5 0, 5.01 10, 5.02 0, 10 0)'),tolerance:=5)) → 'LineString(0 0, 10 0)'`
+```
+geom_from_wkt('LineString(0 0, 5 0, 5.01 10, 5.02 0, 10 0)'),tolerance:=5)) → 'LineString(0 0, 10 0)'
+```
 
 ![](../../img/geometria/simplify_vw/simplify_vw1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -3615,18 +3204,14 @@ Argomenti:
 
 Esempi:
 
-* `single_sided_buffer($geometry, 10.5) → linea bufferizzata a sinistra di 10.5 unità`
-* `single_sided_buffer($geometry, -10.5) → linea bufferizzata a destra di 10.5 unità`
-* `single_sided_buffer($geometry, 10.5, segments:=16, join:=1) → linea bufferizzata a sinistra di 10.5 unità, usando più segmenti per risultare in un buffer più morbido`
-* `single_sided_buffer($geometry, 10.5, join:=3) → linea bufferizzata a sinistra di 10.5 unità, usando un'unione smussata`
+```
+single_sided_buffer($geometry, 10.5) → linea bufferizzata a sinistra di 10.5 unità
+single_sided_buffer($geometry, -10.5) → linea bufferizzata a destra di 10.5 unità
+single_sided_buffer($geometry, 10.5, segments:=16, join:=1) → linea bufferizzata a sinistra di 10.5 unità, usando più segmenti per risultare in un buffer più morbido
+single_sided_buffer($geometry, 10.5, join:=3) → linea bufferizzata a sinistra di 10.5 unità, usando un'unione smussata
+```
 
 ![](../../img/geometria/single_sided_buffer/single_sided_buffer1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -3652,13 +3237,11 @@ Argomenti:
 
 Esempi:
 
+```
+geom_to_wkt(smooth(geometry:=geom_from_wkt('LineString(0 0, 5 0, 5 5)'),iterations:=1,offset:=0.2,min_length:=-1,max_angle:=180)) → 'LineString (0 0, 4 0, 5 1, 5 5)'
+```
+
 ![](../../img/geometria/smooth/smooth1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -3676,17 +3259,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt(start_point(geom_from_wkt('LINESTRING(4 0, 4 2, 0 2)'))) → 'Point (4 0)'`
+```
+geom_to_wkt(start_point(geom_from_wkt('LINESTRING(4 0, 4 2, 0 2)'))) → 'Point (4 0)'
+```
 
 ![](../../img/geometria/start_point/start_point1.png)
-
-Nota bene:
-
---
-
-Osservazioni: _<span style="color:red;">geometry</span>_
-
---
 
 Start_point di geometria poligonale:
 
@@ -3713,38 +3290,32 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt( sym_difference( geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ), geom_from_wkt( 'LINESTRING(3 3, 8 8)' ) ) ) → LINESTRING(5 5, 8 8)`
+```
+geom_to_wkt( sym_difference( geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ), geom_from_wkt( 'LINESTRING(3 3, 8 8)' ) ) ) → LINESTRING(5 5, 8 8)
+```
 
 ![](../../img/geometria/sym_difference/sym_difference1.png)
 
 ![](../../img/geometria/sym_difference/sym_difference3.png)
 
-Espressione:
-
+!!! Tip "Espressione"
 ```
--- differenza simmetrica tra le due linee
-sym_difference( 
-make_line(  -- linea a
-	start_point(geometry(get_feature_by_id('linea_a',0))), 
-	start_point($geometry),
-	end_point(geometry(get_feature_by_id('linea_a',0)))),
-make_line(  -- linea b
-	start_point($geometry), 
-	end_point(geometry(get_feature_by_id('linea_a',0))),
-	end_point($geometry))
-				)
--- NB: -- l' ordine delle geometrie è indifferente
+	-- differenza simmetrica tra le due linee
+	sym_difference( 
+	make_line(  -- linea a
+		start_point(geometry(get_feature_by_id('linea_a',0))), 
+		start_point($geometry),
+		end_point(geometry(get_feature_by_id('linea_a',0)))),
+	make_line(  -- linea b
+		start_point($geometry), 
+		end_point(geometry(get_feature_by_id('linea_a',0))),
+		end_point($geometry))
+					)
+	-- NB: -- l' ordine delle geometrie è indifferente
 ```
 
-prova tu:
-
-[Dati e progetto qgz](https://github.com/gbvitrano/HfcQGIS/raw/master/prova_tu/DIFFERENCE.zip)
-
-Nota bene:
-
---
-
-Osservazioni:
+!!! Question "Prova tu"
+	[Dati e progetto qgz](https://github.com/gbvitrano/HfcQGIS/raw/master/prova_tu/DIFFERENCE.zip)
 
 --
 
@@ -3771,15 +3342,11 @@ Argomenti:
 
 Esempi:
 
-* `tapered_buffer(geometry:=geom_from_wkt('LINESTRING(1 2, 4 2)'),start_width:=1,end_width:=2,segments:=8) → Un buffer rastremato che inizia con un diametro di 1 e termina con un diametro di 2 lungo la geometria della linea.`
+```
+tapered_buffer(geometry:=geom_from_wkt('LINESTRING(1 2, 4 2)'),start_width:=1,end_width:=2,segments:=8) → Un buffer rastremato che inizia con un diametro di 1 e termina con un diametro di 2 lungo la geometria della linea.
+```
 
 ![](../../img/geometria/tapered_buffer/tapered_buffer1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -3805,9 +3372,10 @@ Argomenti:
 
 Esempi:
 
-* `touches( geom_from_wkt( 'LINESTRING(5 3, 4 4)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → 1`
-* `touches( geom_from_wkt( 'POINT(4 4)' ), geom_from_wkt( 'POINT(5 5)' ) ) → 0`
-
+```
+touches( geom_from_wkt( 'LINESTRING(5 3, 4 4)' ), geom_from_wkt( 'LINESTRING(3 3, 4 4, 5 5)' ) ) → 1
+touches( geom_from_wkt( 'POINT(4 4)' ), geom_from_wkt( 'POINT(5 5)' ) ) → 0
+```
 
 ![](../../img/geometria/touches/touches1.png)
 
@@ -3816,12 +3384,12 @@ Nota bene:
 --
 
 Osservazioni:
+	
+Usando algoritmo `Seleziona per espressione` presente in strumenti di processing oppure ![icona](https://docs.qgis.org/2.18/en/_images/mIconExpressionSelect.png) (Ctrl+F3):
 
-Usando algoritmo `Seleziona per espressione` presente in strumenti di processing oppure ![icona](https://docs.qgis.org/2.18/en/_images/mIconExpressionSelect.png) (ctrl+F3):
-
-espressione usata:
-
-`touches(geometry(get_feature( 'province_rt_rt','pk_uid','46')),$geometry)`
+```
+touches(geometry(get_feature( 'province_rt_rt','pk_uid','46')),$geometry)
+```
 
 dove:
 
@@ -3833,7 +3401,7 @@ dove:
 
 seleziono tutti i comuni `touches` (toccati) dalla provincia con `pk_uid`46 (Siena)
 
-**PS:** potrei anche negare (`NOT`) l'espressione per selezionare il complementare (tutti i comuni tranne quelli toccati dalla provincia di Siena).
+PS:** potrei anche negare (`NOT`) l'espressione per selezionare il complementare (tutti i comuni tranne quelli toccati dalla provincia di Siena).
 
 `NOT touches(geometry(get_feature( 'province_rt_rt','pk_uid','52')),$geometry)`
 
@@ -3857,15 +3425,11 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt( transform( $geometry, 'EPSG:2154', 'EPSG:4326' ) ) → POINT(0 51)`
+```
+geom_to_wkt( transform( $geometry, 'EPSG:2154', 'EPSG:4326' ) ) → POINT(0 51)
+```
 
 ![](../../img/geometria/transform/transform1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -3889,15 +3453,11 @@ Argomenti:
 
 Esempi:
 
-* `translate($geometry, 5, 10) → una geometria dello stesso tipo come l'originale`
+```
+translate($geometry, 5, 10) → una geometria dello stesso tipo come l'originale
+```
 
 ![](../../img/geometria/translate/translate1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -3920,38 +3480,32 @@ Argomenti:
 
 Esempi:
 
-* `geom_to_wkt( union( geom_from_wkt( 'POINT(4 4)' ), geom_from_wkt( 'POINT(5 5)' ) ) ) → MULTIPOINT(4 4, 5 5)`
+```
+geom_to_wkt( union( geom_from_wkt( 'POINT(4 4)' ), geom_from_wkt( 'POINT(5 5)' ) ) ) → MULTIPOINT(4 4, 5 5)
+```
 
 ![](../../img/geometria/union/union1.png)
 
 ![](../../img/geometria/union/union3.png)
 
-Espressione:
-
+!!! Tip "Espressione"
 ```
--- unione delle due linee
-union( 
-make_line(  -- linea a
-	start_point(geometry(get_feature_by_id('linea_a',0))), 
-	start_point($geometry),
-	end_point(geometry(get_feature_by_id('linea_a',0)))),
-make_line(  -- linea b
-	start_point($geometry), 
-	end_point(geometry(get_feature_by_id('linea_a',0))),
-	end_point($geometry))
-				)
--- NB: -- l' ordine delle geometrie è indifferente
+	-- unione delle due linee
+	union( 
+	make_line(  -- linea a
+		start_point(geometry(get_feature_by_id('linea_a',0))), 
+		start_point($geometry),
+		end_point(geometry(get_feature_by_id('linea_a',0)))),
+	make_line(  -- linea b
+		start_point($geometry), 
+		end_point(geometry(get_feature_by_id('linea_a',0))),
+		end_point($geometry))
+					)
+	-- NB: -- l' ordine delle geometrie è indifferente
 ```
 
-prova tu:
-
-[Dati e progetto qgz](https://github.com/gbvitrano/HfcQGIS/raw/master/prova_tu/DIFFERENCE.zip)
-
-Nota bene:
-
---
-
-Osservazioni:
+!!! Question "Prova tu"
+	[Dati e progetto qgz](https://github.com/gbvitrano/HfcQGIS/raw/master/prova_tu/DIFFERENCE.zip)
 
 --
 
@@ -3965,7 +3519,7 @@ Restituisce un buffer a forma di cuneo che origina da una geometria del punto.
 
 Sintassi:
 
-- wedge_buffer( _<span style="color:red;">geometry</span>_, _<span style="color:red;">azimuth</span>_, _<span style="color:red;">width</span>_, _<span style="color:red;">outer_radius</span>_[,_<span style="color:red;">inner_radius=0.0</span>_]_)
+- wedge_buffer( _<span style="color:red;">geometry</span>_, _<span style="color:red;">azimuth</span>_, _<span style="color:red;">width</span>_, _<span style="color:red;">outer_radius</span>_[,_<span style="color:red;">inner_radius=0.0</span>_])
 
 [ ] contrassegna componenti opzionali
 
@@ -3979,15 +3533,11 @@ Argomenti:
 
 Esempi:
 
-* `wedge_buffer(center:=geom_from_wkt('POINT(1 2)'),azimuth:=90,width:=180,outer_radius:=1) → Un buffer a forma di cuneo centrato sul punto (1,2), rivolto verso est, con una larghezza di 180 gradi e raggio esterno di 1.`
+```
+wedge_buffer(center:=geom_from_wkt('POINT(1 2)'),azimuth:=90,width:=180,outer_radius:=1) → Un buffer a forma di cuneo centrato sul punto (1,2), rivolto verso est, con una larghezza di 180 gradi e raggio esterno di 1.
+```
 
 ![](../../img/geometria/wedge_buffer/wedge_buffer1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -4005,28 +3555,24 @@ Sintassi:
 
 Argomenti:
 
-* _<span style="color:red;">geometry1</span>__ una geometria
+* _<span style="color:red;">geometry1</span>_ una geometria
 * _<span style="color:red;">geometry2</span>_ una geometria
 
 Esempi:
 
-* `within( geom_from_wkt( 'POINT( 0.5 0.5)' ), geom_from_wkt( 'POLYGON((0 0, 0 1, 1 1, 1 0, 0 0))' ) ) → 1`
-* `within( geom_from_wkt( 'POINT( 5 5 )' ), geom_from_wkt( 'POLYGON((0 0, 0 1, 1 1, 1 0, 0 0 ))' ) ) → 0`
+```
+within( geom_from_wkt( 'POINT( 0.5 0.5)' ), geom_from_wkt( 'POLYGON((0 0, 0 1, 1 1, 1 0, 0 0))' ) ) → 1
+within( geom_from_wkt( 'POINT( 5 5 )' ), geom_from_wkt( 'POLYGON((0 0, 0 1, 1 1, 1 0, 0 0 ))' ) ) → 0
+```
 
 ![](../../img/geometria/within/within1.png)
 
-Nota bene:
-
---
-
 Osservazioni:
 
-Usando algoritmo `Seleziona per espressione` presente in strumenti di processing oppure ![icona](https://docs.qgis.org/2.18/en/_images/mIconExpressionSelect.png) (ctrl+F3):
-
-espressione usata:
-
-`within($geometry,geometry(get_feature( 'province_rt_rt','pk_uid','53')))`
-
+	Usando algoritmo `Seleziona per espressione` presente in strumenti di processing oppure ![icona](https://docs.qgis.org/2.18/en/_images/mIconExpressionSelect.png) (Ctrl+F3):
+```
+	- within($geometry,geometry(get_feature( 'province_rt_rt','pk_uid','53')))
+```
 dove:
 
 * _geometry1_ è `$geometry`
@@ -4037,18 +3583,19 @@ dove:
 
 seleziono tutti i comuni `within` (contenuti) nella provincia con `pk_uid`53 (Grosseto)
 
-**PS:** potrei anche negare (`NOT`) l'espressione per selezionare il complementare (tutti i comuni tranne quelli contenuti nella provincia di Grosseto).
+PS:** potrei anche negare (`NOT`) l'espressione per selezionare il complementare (tutti i comuni tranne quelli contenuti nella provincia di Grosseto).
 
 `NOT within($geometry,geometry(get_feature( 'province_rt_rt','pk_uid','53')))`
 
 Altro esempio con condizione sulle etichette
 
+!!! Tip "Espressione"
 ```
-CASE WHEN within( $geometry,
-geometry(get_feature('poligono','id',1))) = 1
-THEN 'INTERNO'
-ELSE 'NON INTERNO'
-END
+	CASE WHEN within( $geometry,
+	geometry(get_feature('poligono','id',1))) = 1
+	THEN 'INTERNO'
+	ELSE 'NON INTERNO'
+	END
 ```
 
 ![](../../img/geometria/within/within2.png)
@@ -4069,16 +3616,12 @@ Argomenti:
 
 Esempi:
 
-* `x( geom_from_wkt( 'POINT(2 5)' ) ) → 2`
-* `x( $geometry ) → coordinata x del centroide dell'elemento corrente`
+```
+x( geom_from_wkt( 'POINT(2 5)' ) ) → 2
+x( $geometry ) → coordinata x del centroide dell'elemento corrente
+```
 
 ![](../../img/geometria/x/x1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -4100,15 +3643,11 @@ Argomenti:
 
 Esempi:
 
-* `x_max( geom_from_wkt( 'LINESTRING(2 5, 3 6, 4 8)') ) → 4`
+```
+x_max( geom_from_wkt( 'LINESTRING(2 5, 3 6, 4 8)') ) → 4
+```
 
 ![](../../img/geometria/x_max/x_max1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -4130,15 +3669,11 @@ Argomenti:
 
 Esempi:
 
-* `x_min( geom_from_wkt( 'LINESTRING(2 5, 3 6, 4 8)') ) → 2`
+```
+x_min( geom_from_wkt( 'LINESTRING(2 5, 3 6, 4 8)') ) → 2
+```
 
 ![](../../img/geometria/x_min/x_min1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -4160,16 +3695,12 @@ Argomenti:
 
 Esempi:
 
-* `y( geom_from_wkt( 'POINT(2 5)' ) ) → 5`
-* `y( $geometry ) → coordinata y del centroide dell'elemento corrente`
+```
+y( geom_from_wkt( 'POINT(2 5)' ) ) → 5
+y( $geometry ) → coordinata y del centroide dell'elemento corrente
+```
 
 ![](../../img/geometria/y/y1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -4191,15 +3722,11 @@ Argomenti:
 
 Esempi:
 
-* `y_max( geom_from_wkt( 'LINESTRING(2 5, 3 6, 4 8)') ) → 8`
+```
+y_max( geom_from_wkt( 'LINESTRING(2 5, 3 6, 4 8)') ) → 8
+```
 
 ![](../../img/geometria/y_max/y_max1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -4221,15 +3748,11 @@ Argomenti:
 
 Esempi:
 
-* `y_min( geom_from_wkt( 'LINESTRING(2 5, 3 6, 4 8)') ) → 5`
+```
+y_min( geom_from_wkt( 'LINESTRING(2 5, 3 6, 4 8)') ) → 5
+```
 
 ![](../../img/geometria/y_min/y_min1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 --
 
@@ -4251,15 +3774,11 @@ Argomenti:
 
 Esempi:
 
-* `z( geom_from_wkt( 'POINTZ(2 5 7)' ) ) → 7`
+```
+z( geom_from_wkt( 'POINTZ(2 5 7)' ) ) → 7
+```
 
 ![](../../img/geometria/z/z1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
 
 ---
 
@@ -4278,22 +3797,14 @@ Argomenti:
 Esempi:
 
 ```
-* z_max( geom_from_wkt( 'POINT ( 0 0 1 )' ) ) → 1
-* z_max( geom_from_wkt( 'MULTIPOINT ( 0 0 1 , 1 1 3 )' ) ) → 3
-* z_max( make_line( make_point( 0,0,0 ), make_point( -1,-1,-2 ) ) ) → 0
-* z_max( geom_from_wkt( 'LINESTRING( 0 0 0, 1 0 2, 1 1 -1 )' ) ) → 2
-* z_max( geom_from_wkt( 'POINT ( 0 0 )' ) ) → NULL
+z_max( geom_from_wkt( 'POINT ( 0 0 1 )' ) ) → 1
+z_max( geom_from_wkt( 'MULTIPOINT ( 0 0 1 , 1 1 3 )' ) ) → 3
+z_max( make_line( make_point( 0,0,0 ), make_point( -1,-1,-2 ) ) ) → 0
+z_max( geom_from_wkt( 'LINESTRING( 0 0 0, 1 0 2, 1 1 -1 )' ) ) → 2
+z_max( geom_from_wkt( 'POINT ( 0 0 )' ) ) → NULL
 ```
 
 ![](../../img/geometria/z_max/z_max1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
-
---
 
 ---
 
@@ -4312,19 +3823,11 @@ Argomenti:
 Esempi:
 
 ```
-* z_min( geom_from_wkt( 'POINT ( 0 0 1 )' ) ) → 1
-* z_min( geom_from_wkt( 'MULTIPOINT ( 0 0 1 , 1 1 3 )' ) ) → 1
-* z_min( make_line( make_point( 0,0,0 ), make_point( -1,-1,-2 ) ) ) → -2
-* z_min( geom_from_wkt( 'LINESTRING( 0 0 0, 1 0 2, 1 1 -1 )' ) ) → -1
-* z_min( geom_from_wkt( 'POINT ( 0 0 )' ) ) → NULL
+z_min( geom_from_wkt( 'POINT ( 0 0 1 )' ) ) → 1
+z_min( geom_from_wkt( 'MULTIPOINT ( 0 0 1 , 1 1 3 )' ) ) → 1
+z_min( make_line( make_point( 0,0,0 ), make_point( -1,-1,-2 ) ) ) → -2
+z_min( geom_from_wkt( 'LINESTRING( 0 0 0, 1 0 2, 1 1 -1 )' ) ) → -1
+z_min( geom_from_wkt( 'POINT ( 0 0 )' ) ) → NULL
 ```
 
 ![](../../img/geometria/z_min/z_min1.png)
-
-Nota bene:
-
---
-
-Osservazioni:
-
---

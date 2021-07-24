@@ -3,31 +3,27 @@ tags:
   - Novità
 ---
 
-# Novità rilevanti introdotte nella 3.18
+# Novità rilevanti introdotte nella 3.18 Zürich
 
-<!-- TOC -->
+![](../img/splashscreen/splash_3_18.png)
 
-- [Novità rilevanti introdotte nella 3.18](#novità-rilevanti-introdotte-nella-318)
-  - [Espressioni](#espressioni)
-  - [GUI/UX](#guiux)
-
-<!-- /TOC -->
+<https://www.qgis.org/it/site/forusers/visualchangelog318/index.html>
 
 ## Espressioni
 
-- `UUID` https://github.com/qgis/QGIS/pull/39414
+- `UUID` <https://github.com/qgis/QGIS/pull/39414>
 
 ![](../img/novita_318/img_02.png)
 
-- `Array_get` (supporta indici negativi) https://github.com/qgis/QGIS/pull/39921
+- `Array_get` (supporta indici negativi) <https://github.com/qgis/QGIS/pull/39921>
 
 ![](../img/novita_318/img_03.png)
 
-- `array_min/max`, `array_majority`, `array_sum/mean/median` https://github.com/qgis/QGIS/pull/40364
+- `array_min/max`, `array_majority`, `array_sum/mean/median` <https://github.com/qgis/QGIS/pull/40364>
 
 ![](../img/novita_318/img_04.png)
 
-- `map_credits` https://github.com/qgis/QGIS/pull/40919
+- `map_credits` <https://github.com/qgis/QGIS/pull/40919>
 
 ![](../img/novita_318/img_05.png)
 
@@ -38,6 +34,6 @@ tags:
 ![](../img/novita_318/img_06.png)
 
 ## GUI/UX
-- Gruppo `recente` singola linea https://github.com/qgis/QGIS/pull/41545
+- Gruppo `recente` singola linea <https://github.com/qgis/QGIS/pull/41545>
 
 ![](../img/novita_318/img_01.png)

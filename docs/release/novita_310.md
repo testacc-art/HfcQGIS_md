@@ -3,7 +3,11 @@ tags:
   - Novità
 ---
 
-# Novità rilevanti introdotte nella 3.10
+# Novità rilevanti introdotte nella 3.10 A Coruña
+
+![](../img/splashscreen/splash_3_10.png)
+
+<https://www.qgis.org/it/site/forusers/visualchangelog310/index.html>
 
 ## Nuove funzioni
 

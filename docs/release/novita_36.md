@@ -3,7 +3,11 @@ tags:
   - Novità
 ---
 
-# Novità rilevanti introdotte nella 3.6 22/02/2019
+# Novità rilevanti introdotte nella 3.6 Noosa
+
+![](../img/splashscreen/splash_3_6_0.png)
+
+<https://www.qgis.org/it/site/forusers/visualchangelog36/index.html>
 
 ## Nuove funzioni
 

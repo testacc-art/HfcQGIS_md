@@ -3,7 +3,11 @@ tags:
   - Novità
 ---
 
-# Novità rilevanti introdotte nella 3.8 21/06/2019
+# Novità rilevanti introdotte nella 3.8 Zanzibar
+
+![](../img/splashscreen/splash_3_8_0.png)
+
+<https://www.qgis.org/it/site/forusers/visualchangelog38/index.html>
 
 ## Nuove funzioni
 

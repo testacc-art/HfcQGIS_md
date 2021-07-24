@@ -3,15 +3,11 @@ tags:
   - Novità
 ---
 
-# Novità rilevanti introdotte nella 3.16
+# Novità rilevanti introdotte nella 3.16 Hannover
 
-<!-- TOC -->
+![](../img/splashscreen/splash_3_16.png)
 
-- [Novità rilevanti introdotte nella 3.16](#novità-rilevanti-introdotte-nella-316)
-  - [Miglioramenti help in linea](#miglioramenti-help-in-linea)
-  - [Nuove funzioni](#nuove-funzioni)
-
-<!-- /TOC -->
+<https://www.qgis.org/it/site/forusers/visualchangelog316/index.html>
 
 ## Miglioramenti help in linea
 
