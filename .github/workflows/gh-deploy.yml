@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: dmitry-shibanov/setup-python@v-dmshib/add-cache-support
+      - uses: actions/setup-python@main
         with:
           python-version: 3.x
           cache: pip
