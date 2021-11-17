@@ -11,9 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: dmitry-shibanov/setup-python@v-dmshib/add-cache-support
         with:
           python-version: 3.x
+          cache: pip
       - run: pip install mkdocs-material
       - run: pip install requests_oauthlib
       - run: pip install click
